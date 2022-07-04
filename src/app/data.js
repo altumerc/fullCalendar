@@ -9,6 +9,4 @@ export class Data{
 
     constructor(apiService : ApiService){}
     
-
-
 }

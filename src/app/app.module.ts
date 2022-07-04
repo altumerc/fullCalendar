@@ -7,7 +7,8 @@ import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
 import { AppComponent } from './app.component';
 import { HttpClientModule , HttpClient} from '@angular/common/http';
-
+import { ModalComponent } from './components/modal/modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -18,12 +19,15 @@ FullCalendarModule.registerPlugins([
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     FullCalendarModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
      // import the FullCalendar module! will make the FullCalendar component available
   ],
   providers: [],

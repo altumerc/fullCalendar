@@ -11,6 +11,8 @@ import { store } from './store';
 import { EventHandlerVars } from '@angular/compiler/src/compiler_util/expression_converter';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -19,16 +21,12 @@ import { map } from 'rxjs/operators';
 })
 
 export class AppComponent implements OnInit{
-   dataOfModal: any =[]
-  //calendarVisible = true;
+   
+  calendarVisible = true;
   calendarOptions: CalendarOptions = {
     plugins: [interactionPlugin,daygridPlugin,timeGridPlugin],
     weekends: false,
-    headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay'
-    },
+    
     initialView: 'timeGridWeek',
     //eventClick: this.handleEventClick.bind(this)
   }
@@ -37,12 +35,18 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     this.apiservice.getEventsStart().subscribe((data) => {  
         this.calendarOptions = {
-          events: data,
+          headerToolbar: {
+            left: 'prev,next',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+          },
           selectable: true,
-          select: this.handleDateSelect.bind(this)
+          //select: this.onClickOpenForm.bind(this),
+          events: data
         }
     })
   }
+}
   //   handleCalendarToggle() {
   //   this.calendarVisible = !this.calendarVisible;
   // }
@@ -56,35 +60,39 @@ export class AppComponent implements OnInit{
   //   subscribe((response :any) => {})
   // }
 
-    handleWeekendsToggle() {
-        const { calendarOptions } = this;
-     calendarOptions.weekends = !calendarOptions.weekends;
-  }
+  //   handleWeekendsToggle() {
+  //     const { calendarOptions } = this;
+  //     calendarOptions.weekends = !calendarOptions.weekends;
+  // }
 
-     handleDateSelect(selectInfo: DateSelectArg) {
-        const title = prompt('Please enter a new title for your event');
-        const calendarApi = selectInfo.view.calendar;
-    //set route for the form in backend 
-    calendarApi.unselect(); // clear date selection
+    //  handleDateSelect(selectInfo: DateSelectArg) {
+    //     const title = prompt('Please enter a new title for your event');
+    //     const calendarApi = selectInfo.view.calendar;
+    // //set route for the form in backend 
+    // calendarApi.unselect(); // clear date selection
 
-    if (title) {
-      calendarApi.addEvent({
-        id: createEventId(),
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        display: 'background'
-        //allDay: selectInfo.allDay
-      })
-    }
-    const {start, end} = this.dataOfModal
+    // if (title) {
+    //   calendarApi.addEvent({
+    //     id: createEventId(),
+    //     title,
+    //     start: selectInfo.startStr,
+    //     end: selectInfo.endStr,
+    //     display: 'background'
+    //     //allDay: selectInfo.allDay
+    //   })
+    // }
     // this.apiservice.addEvent().subscribe((data) =>{
 
     // })
    // console.log(selectInfo.startStr)
-    console.log(this.dataOfModal)
-  }
-}
+  
+  // hideForm()
+  // {
+  //   this.addEventForm.patchValue({title: ""})
+  //   this.addEventForm.get('title').clearValidators()
+  //   this.addEventForm.get('title').updateValueAndValidity()
+  // }
+
 
 //   handleEventClick(clickInfo: EventClickArg) {
 //     if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {

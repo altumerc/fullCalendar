@@ -1,0 +1,41 @@
+<nav class="navbar navbar-light bg-dark">
+    <div class="container-fluid">
+        <h1 style=" color :aliceblue">Conference Room</h1>
+        <div class="d-flex">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" class="btn btn-succes" style="color: orange">Schedule Meeting</button>
+        </div>
+    </div>
+</nav>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Select the time for meeting</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup] = "formValue">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Enter Date</label>
+            <input type="date" formControlName="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Date">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Enter Start Time</label>
+            <input type="time" formControlName="startTime" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter start time">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Enter End Time</label>
+            <input type="time" formControlName="endTime" class="form-control" id="exampleInputPassword1" placeholder="Enter end time">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" (click)="postDataOfEvent()" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
