@@ -1,5 +1,5 @@
 export class ModalData{
-    date : string
+    dateMeeting : string =''
     startTime : number
     endTime : number 
 }

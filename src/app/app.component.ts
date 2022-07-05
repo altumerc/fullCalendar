@@ -22,29 +22,30 @@ import { Validators } from '@angular/forms';
 
 export class AppComponent implements OnInit{
    
-  calendarVisible = true;
-  calendarOptions: CalendarOptions = {
-    plugins: [interactionPlugin,daygridPlugin,timeGridPlugin],
-    weekends: false,
+//   calendarVisible = true;
+//   calendarOptions: CalendarOptions = {
+//     plugins: [interactionPlugin,daygridPlugin,timeGridPlugin],
+//     weekends: false,
     
-    initialView: 'timeGridWeek',
-    //eventClick: this.handleEventClick.bind(this)
-  }
-  constructor(private apiservice : ApiService) {}
+//     initialView: 'timeGridWeek',
+//     //eventClick: this.handleEventClick.bind(this)
+//   }
+//   constructor(private apiservice : ApiService) {}
   
   ngOnInit() {
-    this.apiservice.getEventsStart().subscribe((data) => {  
-        this.calendarOptions = {
-          headerToolbar: {
-            left: 'prev,next',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay'
-          },
-          selectable: true,
-          //select: this.onClickOpenForm.bind(this),
-          events: data
-        }
-    })
+  //   this.apiservice.getEventsStart().subscribe((data) => {  
+  //       this.calendarOptions = {
+  //         headerToolbar: {
+  //           left: 'prev,next',
+  //           center: 'title',
+  //           right: 'dayGridMonth,timeGridWeek,timeGridDay'
+  //         },
+  //         //selectable: true,
+  //         //select: this.onClickOpenForm.bind(this),
+  //         events: data
+  //       }
+  //   })
+  // }
   }
 }
   //   handleCalendarToggle() {

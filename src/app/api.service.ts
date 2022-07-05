@@ -16,11 +16,12 @@ constructor(private http:HttpClient){}
 // {
 //   return this.http.post('http://localhost:7000/')
 // }
-createMeeting(data : any) : Observable<any[]>
+createMeeting(data : ModalData) : Observable<any[]>
 {
-  return this.http.post<any>('http://localhost:7000/postData', data)
+  return this.http.post<any[]>('http://localhost:7000/postData', data)
 }
 getEventsStart():Observable<any[]> {
   return this.http.get<string[]>('http://localhost:7000/data/start')
 }
+
 }

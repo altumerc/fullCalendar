@@ -22,25 +22,28 @@ export class ModalComponent implements OnInit  {
   ngOnInit(): void {
 
     this.formValue = this.formbuilder.group({
-      date: [''],
-      startTime: [''],
-      endTime : ['']
+      
+      dateMeeting: [null],
+      startTime: [null],
+      endTime : [null]
     })
   }
 
   postDataOfEvent(){
-    this.eventDataModel.date =this.formValue.value.date
+    this.eventDataModel.dateMeeting = this.formValue.value.dateMeeting
     this.eventDataModel.startTime = this.formValue.value.startTime
     this.eventDataModel.endTime = this.formValue.value.endTime
-
     console.log(this.eventDataModel)
     this.api.createMeeting(this.eventDataModel)
     .subscribe(res =>{
       console.log(res)
       alert("Meeting Scheduled")
-    },err =>{
-      console.log(err)
-      alert("Meeting cannot be scheduled right now")
-    })
+      let ref = document.getElementById('cancel')
+      ref?.click()
+      this.api.getEventsStart()
+     },err =>{
+       console.log(err)
+       alert("Meeting cannot be scheduled right now")
+     })
   }
 }

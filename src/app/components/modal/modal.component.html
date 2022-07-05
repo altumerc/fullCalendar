@@ -1,6 +1,7 @@
 <nav class="navbar navbar-light bg-dark">
     <div class="container-fluid">
-        <h1 style=" color :aliceblue">Conference Room</h1>
+      <img src="https://www.iskraemeco.com/app/uploads/2019/09/ie-favicon-red.png" alt="" width="26" height="24"
+      class="d-inline-block">
         <div class="d-flex">
             <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" class="btn btn-succes" style="color: orange">Schedule Meeting</button>
         </div>
@@ -19,21 +20,21 @@
       <div class="modal-body">
         <form [formGroup] = "formValue">
           <div class="form-group">
-            <label for="exampleInputEmail1">Enter Date</label>
-            <input type="date" formControlName="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Date">
+            <label for="exampleInputDate">Enter Date</label>
+            <input type="date" formControlName="dateMeeting" class="form-control" id="exampleInputDate" placeholder="Enter Date">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Enter Start Time</label>
-            <input type="time" formControlName="startTime" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter start time">
+            <label for="exampleInputStartTime">Enter Start Time</label>
+            <input type="time" formControlName="startTime" class="form-control" id="exampleInputStartTime" placeholder="Enter start time">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Enter End Time</label>
-            <input type="time" formControlName="endTime" class="form-control" id="exampleInputPassword1" placeholder="Enter end time">
+            <label for="exampleInputEndTime">Enter End Time</label>
+            <input type="time" formControlName="endTime" class="form-control" id="exampleInputEndTime" placeholder="Enter end time">
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" (click)="postDataOfEvent()" class="btn btn-primary">Submit</button>
       </div>
     </div>
