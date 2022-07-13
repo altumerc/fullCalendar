@@ -1,14 +1,17 @@
-<nav class="navbar navbar-light bg-dark">
-    <div class="container-fluid">
-      <img src="https://www.iskraemeco.com/app/uploads/2019/09/ie-favicon-red.png" alt="" width="26" height="24"
+<nav class="navbar navbar-light bg-dark" style="height: 13vh;">
+  <div class="container-fluid">
+    <img src="https://www.iskraemeco.com/app/uploads/2019/09/ie-favicon-red.png" alt="" width="26" height="24"
       class="d-inline-block">
-        <div class="d-flex">
-            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" class="btn btn-succes" style="color: orange">Schedule Meeting</button>
-        </div>
+      <span style="color: white;font-family:'Raleway',sans-serif;font-size: 30px;font-weight: bold;">Conference Management System</span>
+    <div class="d-flex">
+      <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" class="btn btn-succes"
+        style="color: orange">Schedule Meeting</button>
     </div>
+  </div>
 </nav>
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -18,18 +21,37 @@
         </button>
       </div>
       <div class="modal-body">
-        <form [formGroup] = "formValue">
+        <form [formGroup]="formValue">
+          <div class="form-group">
+            <label for="exampleInputDate">Enter Name of Employee</label>
+            <input type="text" formControlName="nameOfOrganiser" class="form-control" id="nameOfHost"
+              placeholder="Enter Name">
+          </div>
           <div class="form-group">
             <label for="exampleInputDate">Enter Date</label>
-            <input type="date" formControlName="dateMeeting" class="form-control" id="exampleInputDate" placeholder="Enter Date">
+            <input type="date" formControlName="dateMeeting" class="form-control" id="exampleInputDate"
+              placeholder="Enter Date">
           </div>
           <div class="form-group">
             <label for="exampleInputStartTime">Enter Start Time</label>
-            <input type="time" formControlName="startTime" class="form-control" id="exampleInputStartTime" placeholder="Enter start time">
+            <input type="time" formControlName="startTime" class="form-control" id="exampleInputStartTime"
+              placeholder="Enter start time">
+          </div>
+          <div><label for="durationOfMeeting">Enter the Duration Of Meeting</label></div>
+          <div class="timeCheck">
+            <label for="15mins"> 15 mins </label>
+            <input type="checkbox" id="15minutes">
+            <label for="30mins" style="margin-left: 4.5em">30mins</label>
+            <input type="checkbox" id="30minutes">
+            <label for="45mins" style="margin-left: 4.5em">45mins</label>
+            <input type="checkbox" id="45minutes">
+            <label for="60mins" style="margin-left: 4.5em">1 hr</label>
+            <input type="checkbox" id="60minutes">
           </div>
           <div class="form-group">
             <label for="exampleInputEndTime">Enter End Time</label>
-            <input type="time" formControlName="endTime" class="form-control" id="exampleInputEndTime" placeholder="Enter end time">
+            <input type="time" formControlName="endTime" class="form-control" id="exampleInputEndTime"
+              placeholder="Enter end time">
           </div>
         </form>
       </div>

@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { ModalComponent } from '../modal/modal.component';
 
 
 @Component({
@@ -34,13 +35,14 @@ export class CalendarComponent implements OnInit {
   ngOnInit() {
     this.apiservice.getEventsStart().subscribe((data) => {  
         this.calendarOptions = {
+          initialView: 'timeGridWeek',
           headerToolbar: {
             left: 'prev,next',
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
           },
           selectable: true,
-          //select: this.onClickOpenForm.bind(this),
+          //select: this.fun.postDataOfEvent.bind(this),
           events: data
         }
     })
