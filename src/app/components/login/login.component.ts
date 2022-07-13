@@ -15,4 +15,10 @@ export class LoginComponent implements OnInit {
    }
   ngOnInit(): void {
   }
+  visible:boolean=true;
+  changetype:boolean=true;
+  toggle(){
+    this.visible=!this.visible;
+    this.changetype=!this.changetype;
+  }
 }

@@ -36,7 +36,7 @@ export class CalendarComponent implements OnInit {
         this.calendarOptions = {
           headerToolbar: {
             left: 'prev,next',
-            center: 'title',
+            center: 'Iskraemeco',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
           },
           selectable: true,

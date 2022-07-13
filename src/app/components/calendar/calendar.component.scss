@@ -45,8 +45,20 @@ h2 {
     height: 100%;
     background:rgba(255,255,255,0.5);
   }
-  
   .fc { /* the calendar root */
-    max-width: 1500px;
+    position: relative;
+    max-width: 1250px;
     margin: 0 auto;
+  }
+  .cg-bg-image{
+    background-image: url("https://www.iskraemeco.com/app/uploads/2020/02/FRONTPAGE_1_1-scaled.jpg");
+    background-size: cover;
+    background-position: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1400px;
+    height: 1000px;
+    z-index: -1;
+    opacity: 0.8;
   }
