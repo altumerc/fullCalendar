@@ -44,7 +44,7 @@ export class CalendarComponent implements OnInit {
           slotMaxTime:"22:00:00",
           headerToolbar: {
             left: 'prev,next',
-            center: 'title',
+            center: 'Iskraemeco',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
           },
           selectable: true,

@@ -1,11 +1,19 @@
 <nav class="navbar navbar-light bg-dark" style="height: 13vh;">
   <div class="container-fluid">
+<<<<<<< HEAD
     <img src="https://www.iskraemeco.com/app/uploads/2019/09/ie-favicon-red.png" alt="" width="26" height="24"
       class="d-inline-block">
     <span style="color: white;font-family:'Raleway',sans-serif;font-size: 30px;font-weight: bold;">Conference Management
       System</span>
     <div class="d-flex">
       <button type="button"  id ="divClick" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" class="btn btn-succes"
+=======
+    <img src="https://www.iskraemeco.com/app/uploads/2019/09/ie-favicon-red.png" alt="" width="48" height="46"
+      class="d-inline-block">
+      <span style="color: white;font-family:'Raleway',sans-serif;font-size: 30px;font-weight: bold;">Conference Management System</span>
+    <div class="d-flex">
+      <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" class="btn btn-succes"
+>>>>>>> e22081b82b86c55d36e3f7e497a84d05ca06a576
         style="color: orange">Schedule Meeting</button>
     </div>
   </div>
@@ -23,12 +31,16 @@
         </button>
       </div>
       <div class="modal-body">
+<<<<<<< HEAD
         <form [formGroup]="formValue" id="form">
           <div class="form-group">
             <label for="nameOfHost">Enter Name of Employee</label>
             <input type="text" formControlName="nameOfOrganiser" class="form-control" id="nameOfHost"
               placeholder="Enter Name">
           </div>
+=======
+        <form [formGroup]="formValue">
+>>>>>>> e22081b82b86c55d36e3f7e497a84d05ca06a576
           <div class="form-group">
             <label for="exampleInputDate">Enter Date</label>
             <input type="date" formControlName="dateMeeting" class="form-control" id="exampleInputDate"
@@ -38,6 +50,7 @@
             <label for="exampleInputStartTime">Enter Start Time</label>
             <input type="time" formControlName="startTime" class="form-control" id="exampleInputStartTime"
               placeholder="Enter start time">
+<<<<<<< HEAD
           </div>
           <div><label for="durationOfMeeting">Enter the Duration Of Meeting</label></div>
           <div class="timeCheck">
@@ -58,6 +71,13 @@
           <div class="form-group">
             <label for="description">Description of Meeting</label>
             <textarea id="description" style="vertical-align:middle"></textarea>
+=======
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEndTime">Enter End Time</label>
+            <input type="time" formControlName="endTime" class="form-control" id="exampleInputEndTime"
+              placeholder="Enter end time">
+>>>>>>> e22081b82b86c55d36e3f7e497a84d05ca06a576
           </div>
         </form>
       </div>
