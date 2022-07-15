@@ -2,13 +2,15 @@
   <div class="container-fluid">
     <img src="https://www.iskraemeco.com/app/uploads/2019/09/ie-favicon-red.png" alt="" width="26" height="24"
       class="d-inline-block">
-      <span style="color: white;font-family:'Raleway',sans-serif;font-size: 30px;font-weight: bold;">Conference Management System</span>
+    <span style="color: white;font-family:'Raleway',sans-serif;font-size: 30px;font-weight: bold;">Conference Management
+      System</span>
     <div class="d-flex">
-      <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" class="btn btn-succes"
+      <button type="button"  id ="divClick" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" class="btn btn-succes"
         style="color: orange">Schedule Meeting</button>
     </div>
   </div>
 </nav>
+<script defer="script.js"> </script>
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
@@ -21,9 +23,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="formValue">
+        <form [formGroup]="formValue" id="form">
           <div class="form-group">
-            <label for="exampleInputDate">Enter Name of Employee</label>
+            <label for="nameOfHost">Enter Name of Employee</label>
             <input type="text" formControlName="nameOfOrganiser" class="form-control" id="nameOfHost"
               placeholder="Enter Name">
           </div>
@@ -40,18 +42,22 @@
           <div><label for="durationOfMeeting">Enter the Duration Of Meeting</label></div>
           <div class="timeCheck">
             <label for="15mins"> 15 mins </label>
-            <input type="checkbox" id="15minutes">
+            <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(15)">
             <label for="30mins" style="margin-left: 4.5em">30mins</label>
-            <input type="checkbox" id="30minutes">
+            <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(30)">
             <label for="45mins" style="margin-left: 4.5em">45mins</label>
-            <input type="checkbox" id="45minutes">
+            <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(45)">
             <label for="60mins" style="margin-left: 4.5em">1 hr</label>
-            <input type="checkbox" id="60minutes">
+            <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(60)">
           </div>
           <div class="form-group">
-            <label for="exampleInputEndTime">Enter End Time</label>
+            <label for="exampleInputEndTime">Enter End Time </label>
             <input type="time" formControlName="endTime" class="form-control" id="exampleInputEndTime"
-              placeholder="Enter end time">
+              placeholder="Enter end time " [value]="newEndTime" [ngModel]="newEndTime">
+          </div>
+          <div class="form-group">
+            <label for="description">Description of Meeting</label>
+            <textarea id="description" style="vertical-align:middle"></textarea>
           </div>
         </form>
       </div>

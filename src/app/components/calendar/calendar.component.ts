@@ -1,4 +1,5 @@
-import { Component ,OnInit} from '@angular/core';
+import { Component ,OnInit,ElementRef, ViewChild} from '@angular/core';
+import { Calendar } from '@fullcalendar/angular';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import daygridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -22,29 +23,36 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class CalendarComponent implements OnInit {
 
+  dateOfMeeting !: string;
   calendarVisible = true;
   calendarOptions: CalendarOptions = {
     plugins: [interactionPlugin,daygridPlugin,timeGridPlugin],
     weekends: false,
     
     initialView: 'timeGridWeek',
-    //eventClick: this.handleEventClick.bind(this)
   }
   constructor(private apiservice : ApiService) {}
-  
+
+  @ViewChild('divClick') divClick: ElementRef;
   ngOnInit() {
     this.apiservice.getEventsStart().subscribe((data) => {  
         this.calendarOptions = {
           initialView: 'timeGridWeek',
+          weekends: false,
+          slotDuration:"00:15:00",
+          slotMinTime:"09:00:00",
+          slotMaxTime:"22:00:00",
           headerToolbar: {
             left: 'prev,next',
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
           },
           selectable: true,
-          //select: this.fun.postDataOfEvent.bind(this),
-          events: data
+          events: data,
+          dateClick:function (info) {
+            document.getElementById('divClick').click();
         }
-    })
+      }
+        })
+    }
   }
-}
