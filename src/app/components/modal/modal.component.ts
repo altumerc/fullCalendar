@@ -17,6 +17,8 @@ export class ModalComponent implements OnInit {
   formValue !: FormGroup
   newEndTime: String = ""
 
+  dateForCalendar : String = ""
+
   eventDataModel: ModalData = new ModalData()
   constructor(private formbuilder: FormBuilder, private api: ApiService, private funCall : CalendarComponent) { }
 
@@ -31,7 +33,6 @@ export class ModalComponent implements OnInit {
     })
   }
 
-  
   addMins(minute:any) {
     var minsToAdd = minute;
     var time = this.formValue.value.startTime;
@@ -39,19 +40,18 @@ export class ModalComponent implements OnInit {
     this.newEndTime = newTime
   }
 
-
   postDataOfEvent() {
+    this.eventDataModel.nameOfOrganiser = this.formValue.value.nameOfOrganiser
     this.eventDataModel.dateMeeting = this.formValue.value.dateMeeting
     this.eventDataModel.startTime = this.formValue.value.startTime
     this.eventDataModel.endTime = this.formValue.value.endTime
-    //console.log(this.eventDataModel)
+    
     this.api.createMeeting(this.eventDataModel)
       .subscribe(res => {
         console.log(res)
         alert("Meeting Scheduled")
         let ref = document.getElementById('cancel')
         ref?.click()
-        // this.api.getEventsStart()
         window.location.reload()
       }, err => {
         console.log(err)

@@ -23,12 +23,12 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class CalendarComponent implements OnInit {
 
+  modalDate: String = "";
   dateOfMeeting !: string;
   calendarVisible = true;
   calendarOptions: CalendarOptions = {
     plugins: [interactionPlugin,daygridPlugin,timeGridPlugin],
     weekends: false,
-    
     initialView: 'timeGridWeek',
   }
   constructor(private apiservice : ApiService) {}
@@ -41,15 +41,17 @@ export class CalendarComponent implements OnInit {
           weekends: false,
           slotDuration:"00:15:00",
           slotMinTime:"09:00:00",
-          slotMaxTime:"22:00:00",
+          slotMaxTime:"21:00:00",
           headerToolbar: {
             left: 'prev,next',
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            right: 'timeGridWeek,timeGridDay'
           },
           selectable: true,
           events: data,
           dateClick:function (info) {
+            this.modalDate = info.dateStr
+            console.log(this.modalDate)
             document.getElementById('divClick').click();
         }
       }
