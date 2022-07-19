@@ -62,6 +62,7 @@ export class ModalComponent implements OnInit,AfterViewInit {
         alert("Meeting Scheduled")
         let ref = document.getElementById('cancel')
         ref?.click()
+        this.formValue.reset()
         window.location.reload()
       }, err => {
         console.log(err)

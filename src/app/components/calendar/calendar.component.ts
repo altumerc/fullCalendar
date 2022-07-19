@@ -51,6 +51,7 @@ export class CalendarComponent implements OnInit {
         //editable:true,
         selectable: true,
         events: data,
+        eventColor: 'pink' ,
         dateClick: this.handleDateClick.bind(this)
       }
     })
