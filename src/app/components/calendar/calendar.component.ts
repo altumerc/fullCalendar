@@ -20,17 +20,17 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class CalendarComponent implements OnInit {
 
-  modalDate: String = "2022-07-20";
-  modalStartTime: String = "";
+    modalDate : String = ""
+    modalStartTime: String = "";
 
   calendarVisible = true;
 
   calendarOptions: CalendarOptions = {
     plugins: [interactionPlugin, daygridPlugin, timeGridPlugin],
     weekends: false,
-    initialView: 'timeGridWeek'
-    
+    initialView: 'timeGridWeek',
   }
+
   constructor(private apiservice: ApiService) { }
 
   @ViewChild('divClick') divClick: ElementRef;
@@ -48,18 +48,21 @@ export class CalendarComponent implements OnInit {
           center: 'title',
           right: 'timeGridWeek,timeGridDay'
         },
-        editable:true,
+        //editable:true,
         selectable: true,
         events: data,
         dateClick: this.handleDateClick.bind(this)
       }
     })
   }
-
+  
   handleDateClick(info){
-          this.modalDate = info.dateStr.slice(0, 10).toString()
-          this.modalStartTime = info.dateStr.slice(11, 19).toString()
-          console.log( this.modalDate)
+          var dateForCalendarInModal = info.dateStr.slice(0, 10).toString()
+          //console.log(dateForCalendarInModal)
+          this.apiservice.modalDate = dateForCalendarInModal 
+          console.log(this.modalDate) 
+          var timeForCalendarInModal= info.dateStr.slice(11, 19).toString()
+          this.apiservice.modalStartTime = timeForCalendarInModal
           document.getElementById('divClick').click();
   }
 }

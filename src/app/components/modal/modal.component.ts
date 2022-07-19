@@ -17,10 +17,10 @@ export class ModalComponent implements OnInit,AfterViewInit {
   formValue !: FormGroup
   newEndTime: String = ""
   dateForCalendar = this.funCall.modalDate
-  timeForCalendar: String = ""
+  timeForCalendar = this.funCall.modalStartTime
 
   eventDataModel: ModalData = new ModalData()
-  constructor(private formbuilder: FormBuilder, private api: ApiService, public funCall : CalendarComponent) { }
+  constructor(private formbuilder: FormBuilder, public api: ApiService, public funCall : CalendarComponent) { }
   
   ngAfterViewInit(): void {
     //console.log(this.calendarData.modalDate)
@@ -39,7 +39,7 @@ export class ModalComponent implements OnInit,AfterViewInit {
       endTime: [null],
       personInMeet: [null]
     })
-        console.log(this.dateForCalendar) 
+
     }
 
   addMins(minute:any) {

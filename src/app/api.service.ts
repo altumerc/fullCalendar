@@ -10,6 +10,8 @@ import { ModalData } from './components/modal/modalData.model';
 })
 export class ApiService {
 
+  modalDate : String = ""
+  modalStartTime: String =""
 constructor(private http:HttpClient){}
 
 // addEvent() : Observable<any>
