@@ -13,6 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import {RouterModule} from '@angular/router';
+import  {ApiService} from './api.service';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -38,7 +39,7 @@ FullCalendarModule.registerPlugins([
     RouterModule
      // import the FullCalendar module! will make the FullCalendar component available
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
