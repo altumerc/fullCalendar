@@ -3,4 +3,5 @@ export class ModalData{
     dateMeeting : string =''
     startTime : number
     endTime : number 
+    personInMeet: number
 }

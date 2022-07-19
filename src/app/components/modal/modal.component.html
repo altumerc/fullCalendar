@@ -32,12 +32,12 @@
           <div class="form-group">
             <label for="exampleInputDate">Enter Date</label>
             <input type="date" formControlName="dateMeeting" class="form-control" id="exampleInputDate"
-              placeholder="Enter Date" [value]="dateForCalendar" [ngModel]="dateForCalendar">
+              placeholder="Enter Date"  [value]="dateForCalendar" [ngModel]="dateForCalendar">
           </div>
           <div class="form-group">
             <label for="exampleInputStartTime">Enter Start Time</label>
             <input type="time" formControlName="startTime" class="form-control" id="exampleInputStartTime"
-              placeholder="Enter start time">
+              placeholder="Enter start time" [value]="timeForCalendar" [ngModel]="timeForCalendar">
           </div>
           <div><label for="durationOfMeeting">Enter the Duration Of Meeting</label></div>
           <div class="timeCheck">
@@ -54,6 +54,11 @@
             <label for="exampleInputEndTime">Enter End Time </label>
             <input type="time" formControlName="endTime" class="form-control" id="exampleInputEndTime"
               placeholder="Enter end time " [value]="newEndTime" [ngModel]="newEndTime">
+          </div>
+          <div class="form-group">
+            <label for="capacity">Enter no of people </label>
+            <input type="number" formControlName="personInMeet" class="form-control" id="capacity"
+              placeholder="Enter no of people " min="1" max="10">
           </div>
           <div class="form-group">
             <label for="description">Description of Meeting</label>
