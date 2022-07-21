@@ -18,6 +18,9 @@ export class ModalComponent implements OnInit,AfterViewInit {
   newEndTime: String = ""
   dateForCalendar = this.funCall.modalDate
   timeForCalendar = this.funCall.modalStartTime
+  titleOfEvent = this.funCall.titleOfEventInMeeting
+  nameOfEventHost = this.funCall.nameOfMeetingHost
+  
 
   eventDataModel: ModalData = new ModalData()
   constructor(private formbuilder: FormBuilder, public api: ApiService, public funCall : CalendarComponent) { }
@@ -68,5 +71,10 @@ export class ModalComponent implements OnInit,AfterViewInit {
         console.log(err)
         alert("Meeting cannot be scheduled right now")
       })
+  }
+  closeEventModal(){
+    console.log('working')
+    let ref = document.getElementById('cancelEventModalDetails')
+    ref?.click()
   }
 }

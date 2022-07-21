@@ -12,6 +12,11 @@ export class ApiService {
 
   modalDate : String = ""
   modalStartTime: String =""
+  titleOfEventInMeeting: String =""
+  nameOfMeetingHost: String =""
+  startTimeForMeeting: String ="";
+  endTimeForMeeting:String =""; 
+
 constructor(private http:HttpClient){}
 
 // addEvent() : Observable<any>
@@ -24,6 +29,9 @@ createMeeting(data : ModalData) : Observable<any[]>
 }
 getEventsStart():Observable<any[]> {
   return this.http.get<string[]>('http://localhost:7000/data/start')
+}
+getDataForModal():Observable<any[]>{
+  return this.http.get<string[]>('http://localhost:7000/data/events')
 }
 
 }
