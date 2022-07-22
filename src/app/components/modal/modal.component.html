@@ -16,7 +16,7 @@
   <div id="formForEvent" class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Select the time for meeting</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle" style="font-family:'Raleway';">Enter meeting details</h5>
         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -24,44 +24,49 @@
       <div class="modal-body">
         <form [formGroup]="formValue" id="form">
           <div class="form-group">
-            <label for="nameOfHost">Enter Name of Employee</label>
-            <input type="text" formControlName="nameOfOrganiser" class="form-control" id="nameOfHost"
-              placeholder="Enter Name">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputDate">Enter Date</label>
-            <input type="date" formControlName="dateMeeting" class="form-control" id="exampleInputDate"
-              placeholder="Enter Date" [value]="this.api.modalDate" [ngModel]="this.api.modalDate">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputStartTime">Enter Start Time</label>
-            <input type="time" formControlName="startTime" class="form-control" id="exampleInputStartTime"
-              placeholder="Enter start time" [value]="this.api.modalStartTime" [ngModel]="this.api.modalStartTime">
-          </div>
-          <div><label for="durationOfMeeting">Enter the Duration Of Meeting</label></div>
-          <div class="timeCheck">
-            <label for="15mins"> 15 mins </label>
-            <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(15)">
-            <label for="30mins" style="margin-left: 4.5em">30mins</label>
-            <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(30)">
-            <label for="45mins" style="margin-left: 4.5em">45mins</label>
-            <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(45)">
-            <label for="60mins" style="margin-left: 4.5em">1 hr</label>
-            <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(60)">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEndTime">Enter End Time </label>
-            <input type="time" formControlName="endTime" class="form-control" id="exampleInputEndTime"
-              placeholder="Enter end time " [value]="newEndTime" [ngModel]="newEndTime">
-          </div>
-          <div class="form-group">
-            <label for="capacity">Enter no of people </label>
-            <input type="number" formControlName="personInMeet" class="form-control" id="capacity"
-              placeholder="Enter no of people " min="1" max="10">
+            <label for=" nameOfHost" style="font-family: 'Raleway';">Name of Employee</label>
+            <input type="text" formControlName="nameOfOrganiser" class="form-control" id="nameOfHost" style="font-family: 'Raleway';font-weight: lighter;">
           </div>
           <br>
           <div class="form-group">
-            <label for="description">Description of Meeting</label>
+            <label for="exampleInputDate" style="font-family: 'Raleway';">Enter Date</label>
+            <input type="date" formControlName="dateMeeting" class="form-control" id="exampleInputDate"
+              placeholder="Enter Date" [value]="this.api.modalDate" [ngModel]="this.api.modalDate">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="exampleInputStartTime" style="font-family: 'Raleway';">Enter Start Time</label>
+            <input type="time" formControlName="startTime" class="form-control" id="exampleInputStartTime"
+              placeholder="Enter start time" [value]="this.api.modalStartTime" [ngModel]="this.api.modalStartTime">
+          </div>
+          <br>
+          <div><label for="durationOfMeeting" style="font-family: 'Raleway';">Enter the Duration Of Meeting</label></div>
+        
+          <div class="timeCheck">
+            <label for="15mins" style="font-family: 'Raleway';"> 15 mins </label>
+            <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(15)">
+            <label for="30mins" style="margin-left: 4.5em;font-family:'Raleway';">30mins</label>
+            <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(30)">
+            <label for="45mins" style="margin-left: 4.5em;font-family: 'Raleway';">45mins</label>
+            <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(45)">
+            <label for="60mins" style="margin-left: 4.5em;font-family: 'Raleway';">1 hr</label>
+            <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(60)">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="exampleInputEndTime" style="font-family: 'Raleway';">Enter End Time </label>
+            <input type="time" formControlName="endTime" class="form-control" id="exampleInputEndTime"
+              placeholder="Enter end time " [value]="newEndTime" [ngModel]="newEndTime">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="capacity" style="font-family: 'Raleway';">Enter no of people </label>
+            <input type="number" formControlName="personInMeet" class="form-control" id="capacity"
+               min="1" max="10">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="description" style="font-family: 'Raleway';">Description of Meeting </label>
             <textarea id="description" style="vertical-align:middle"></textarea>
           </div>
         </form>
@@ -95,15 +100,4 @@
     </div>
   </div>
 </div>
-<!-- <div>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm">Small
-        modal</button>
-      <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
 
-          </div>
-        </div>
-      </div>
-    </div> -->

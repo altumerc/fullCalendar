@@ -77,8 +77,4 @@ export class ModalComponent implements OnInit,AfterViewInit {
     let ref = document.getElementById('cancelEventModalDetails')
     ref?.click()
   }
-
-  scheduleMeet(){
-    this.funCall.handleDateClick()
-  }
 }

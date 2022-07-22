@@ -9,7 +9,7 @@
 
 <div class="container-fluid d-flex justify-content-center" id="cont">
 <div class="cg-bg-image" style="background-image:url('https://www.iskraemeco.com/app/uploads/2020/02/FRONTPAGE_1_1-scaled.jpg')"></div>
-<form class="" style="width: 600px;height: 330px;">
+<form [formGroup]="checkoutForm" #userlogin = "ngForm" (ngSubmit)="onSubmit()" class="" style="width: 600px;height: 330px;" >
     <div class="row g-0" style="height: 60px;">
         <div class="col text-center p-2 mb-3">
             <span class="fs-2" style="font-family:'Raleway',sans-serif;color:rgb(166, 16, 30);font-weight: bold;">Conference Management
@@ -22,16 +22,17 @@
         </div>
     </div>
     <br>
+
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-4">
             <div class="form-floating">
-                <input type="text" class="form-control" id="id" placeholder="ID" style="width: 300px;height: 55px;">
+                <input formControlName="e_id" type="text" class="form-control" id="id" placeholder="ID" style="width: 300px;height: 55px;">
                 <label for="id" style="color: rgb(134, 131, 131);">Employee Id</label>
             </div>
             <br>
             <div class="form-floating">
-                <input [type]="changetype?'password':'text'" class="form-control" id="floatingPassword" placeholder="Password"
+                <input formControlName="pwd" [type]="changetype?'password':'text'" class="form-control" id="floatingPassword" placeholder="Password"
                     style="width: 300px;height: 55px;">
                 <span class="eye" (click)="toggle()">
                     <i [ngClass]="visible?'fa-solid fa-eye':'fa-solid fa-eye-slash'"></i>
@@ -44,7 +45,7 @@
         <div class="row">
             <div class="col-2 offset-5">
                 <div class="d-grid">
-                    <button (click)="goToPage()" type="submit" class="btn btn-success"
+                    <button type="submit" class="btn btn-success"
                         style="font-family:'Raleway',sans-serif;color: #ffffff;font-size: 15px;">Submit</button>
                 </div>
             </div>
@@ -53,7 +54,6 @@
         <div class="col-md-4"></div>
     </div>
 </form>
-</div>
 <br>
 <br>
 <br>
