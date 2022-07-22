@@ -1,3 +1,23 @@
+<button type="button" id="calendarModal" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"></button>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Meeting Information</h5>
+      </div>
+      <div class="modal-body">
+        <p> The {{this.api.titleOfEventInMeeting}} is booked by {{this.api.nameOfMeetingHost}}</p>
+        <p> from {{this.api.startTimeForMeeting}} to {{this.api.endTimeForMeeting}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
 <nav class="navbar navbar-light bg-dark" style="height: 13vh;">
   <div class="container-fluid">
     <img src="https://www.iskraemeco.com/app/uploads/2019/09/ie-favicon-red.png" alt="" width="46" height="44"
@@ -10,8 +30,7 @@
     </div>
   </div>
 </nav>
-<script defer="script.js"> </script>
-<!-- Modal -->
+
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -33,12 +52,13 @@
             <label for="exampleInputDate" style="font-family: 'Raleway';">Enter Date</label>
             <input type="date" formControlName="dateMeeting" class="form-control" id="exampleInputDate"
               placeholder="Enter Date" [value]="dateForCalendar" [ngModel]="dateForCalendar">
+              placeholder="Enter Date" [value]="this.api.modalDate" [ngModel]="this.api.modalDate">
           </div>
           <br>
           <div class="form-group">
             <label for="exampleInputStartTime" style="font-family: 'Raleway';">Enter Start Time</label>
             <input type="time" formControlName="startTime" class="form-control" id="exampleInputStartTime"
-              placeholder="Enter start time" [value]="timeForCalendar" [ngModel]="timeForCalendar">
+              placeholder="Enter start time" [value]="this.api.modalStartTime" [ngModel]="this.api.modalStartTime">
           </div>
           <br>
           <div><label for="durationOfMeeting" style="font-family: 'Raleway';">Enter the Duration Of Meeting</label></div>

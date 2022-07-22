@@ -13,6 +13,7 @@ import { map } from 'rxjs/operators';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ModalComponent } from '../modal/modal.component';
+import { EventData} from '../calendar/eventData.model'
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -20,20 +21,26 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class CalendarComponent implements OnInit {
 
-  modalDate: String = "2022-07-20";
-  modalStartTime: String = "";
-
+    modalDate : String = ""
+    modalStartTime: String = "";
+    titleOfEventInMeeting: String ="";
+    nameOfMeetingHost: String ="";
+    startTimeForMeeting: String ="";
+    endTimeForMeeting:String =""; 
   calendarVisible = true;
+  eventData : EventData[] 
 
   calendarOptions: CalendarOptions = {
     plugins: [interactionPlugin, daygridPlugin, timeGridPlugin],
     weekends: false,
-    initialView: 'timeGridWeek'
-    
+    initialView: 'timeGridWeek',
   }
-  constructor(private apiservice: ApiService) { }
+
+  constructor(public apiservice: ApiService) { }
 
   @ViewChild('divClick') divClick: ElementRef;
+
+  @ViewChild('calendarModal') calendarModal : ElementRef;
   
   ngOnInit() {
     this.apiservice.getEventsStart().subscribe((data) => {
@@ -48,18 +55,41 @@ export class CalendarComponent implements OnInit {
           center: 'title',
           right: 'timeGridWeek,timeGridDay'
         },
-        editable:true,
+        //editable:true,
         selectable: true,
         events: data,
-        dateClick: this.handleDateClick.bind(this)
+        eventColor: 'pink' ,
+        dateClick: this.handleDateClick.bind(this),
+        eventClick: this.handleEventClick.bind(this)
       }
     })
   }
 
   handleDateClick(info){
-          this.modalDate = info.dateStr.slice(0, 10).toString()
-          this.modalStartTime = info.dateStr.slice(11, 19).toString()
-          console.log( this.modalDate)
-          document.getElementById('divClick').click();
-  }
+    var dateForCalendarInModal = info.dateStr.slice(0, 10).toString()
+    //console.log(dateForCalendarInModal)
+    this.apiservice.modalDate = dateForCalendarInModal 
+    //console.log(this.modalDate) 
+    var timeForCalendarInModal= info.dateStr.slice(11, 19).toString()
+    this.apiservice.modalStartTime = timeForCalendarInModal
+    document.getElementById('divClick').click();
+}
+
+  handleEventClick(info){
+    var titleOfEvent  = info.event.title
+    this.apiservice.titleOfEventInMeeting = titleOfEvent
+    var name = info.event.classNames
+    this.apiservice.nameOfMeetingHost = name
+    this.apiservice.startTimeForMeeting = info.event.start.toLocaleTimeString()
+    this.apiservice.endTimeForMeeting = info.event.end.toLocaleTimeString()
+    document.getElementById('calendarModal').click()
+    // this.apiservice.getDataForModal().subscribe(response => {
+    //   var name = info.event.classNames
+    //   //var cap = info.event.classNames
+    //   //var names = response.map(n => n.name)
+    //   //var capacity = response.map(cap => cap.c)
+      
+    //   this.eventData = response
+    // })
+  }  
 }

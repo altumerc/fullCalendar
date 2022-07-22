@@ -16,10 +16,10 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  // addEvent() : Observable<any>
-  // {
-  //   return this.http.post('http://localhost:7000/')
-  // }
+   /* addEvent() : Observable<any>
+   {
+     return this.http.post('http://localhost:7000/')
+   } */
   createMeeting(data: ModalData): Observable<any[]> {
     return this.http.post<any[]>('http://localhost:7000/postData', data)
   }

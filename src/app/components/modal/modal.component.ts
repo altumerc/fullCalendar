@@ -17,10 +17,13 @@ export class ModalComponent implements OnInit,AfterViewInit {
   formValue !: FormGroup
   newEndTime: String = ""
   dateForCalendar = this.funCall.modalDate
-  timeForCalendar: String = ""
+  timeForCalendar = this.funCall.modalStartTime
+  titleOfEvent = this.funCall.titleOfEventInMeeting
+  nameOfEventHost = this.funCall.nameOfMeetingHost
+  
 
   eventDataModel: ModalData = new ModalData()
-  constructor(private formbuilder: FormBuilder, private api: ApiService, public funCall : CalendarComponent) { }
+  constructor(private formbuilder: FormBuilder, public api: ApiService, public funCall : CalendarComponent) { }
   
   ngAfterViewInit(): void {
     //console.log(this.calendarData.modalDate)
@@ -39,7 +42,7 @@ export class ModalComponent implements OnInit,AfterViewInit {
       endTime: [null],
       personInMeet: [null]
     })
-        console.log(this.dateForCalendar) 
+
     }
 
   addMins(minute:any) {
@@ -62,10 +65,16 @@ export class ModalComponent implements OnInit,AfterViewInit {
         alert("Meeting Scheduled")
         let ref = document.getElementById('cancel')
         ref?.click()
+        this.formValue.reset()
         window.location.reload()
       }, err => {
         console.log(err)
         alert("Meeting cannot be scheduled right now")
       })
+  }
+  closeEventModal(){
+    console.log('working')
+    let ref = document.getElementById('cancelEventModalDetails')
+    ref?.click()
   }
 }
