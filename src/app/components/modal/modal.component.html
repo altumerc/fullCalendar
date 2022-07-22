@@ -5,8 +5,8 @@
     <span style="color: white;font-family:'Raleway',sans-serif;font-size: 30px;font-weight: bold;">Conference Management
       System</span>
     <div class="d-flex">
-      <button type="button"  id ="divClick" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" class="btn btn-succes"
-        style="color: orange">Schedule Meeting</button>
+      <button type="button" id="divClick" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"
+        class="btn btn-succes" style="color: orange">Schedule Meeting</button>
     </div>
   </div>
 </nav>
@@ -17,7 +17,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Select the time for meeting</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle" style="font-family:'Raleway';">Enter meeting details</h5>
         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -25,38 +25,49 @@
       <div class="modal-body">
         <form [formGroup]="formValue" id="form">
           <div class="form-group">
-            <label for="nameOfHost">Enter Name of Employee</label>
-            <input type="text" formControlName="nameOfOrganiser" class="form-control" id="nameOfHost"
-              placeholder="Enter Name">
+            <label for=" nameOfHost" style="font-family: 'Raleway';">Name of Employee</label>
+            <input type="text" formControlName="nameOfOrganiser" class="form-control" id="nameOfHost" style="font-family: 'Raleway';font-weight: lighter;">
           </div>
+          <br>
           <div class="form-group">
-            <label for="exampleInputDate">Enter Date</label>
+            <label for="exampleInputDate" style="font-family: 'Raleway';">Enter Date</label>
             <input type="date" formControlName="dateMeeting" class="form-control" id="exampleInputDate"
-              placeholder="Enter Date">
+              placeholder="Enter Date" [value]="dateForCalendar" [ngModel]="dateForCalendar">
           </div>
+          <br>
           <div class="form-group">
-            <label for="exampleInputStartTime">Enter Start Time</label>
+            <label for="exampleInputStartTime" style="font-family: 'Raleway';">Enter Start Time</label>
             <input type="time" formControlName="startTime" class="form-control" id="exampleInputStartTime"
-              placeholder="Enter start time">
+              placeholder="Enter start time" [value]="timeForCalendar" [ngModel]="timeForCalendar">
           </div>
-          <div><label for="durationOfMeeting">Enter the Duration Of Meeting</label></div>
+          <br>
+          <div><label for="durationOfMeeting" style="font-family: 'Raleway';">Enter the Duration Of Meeting</label></div>
+        
           <div class="timeCheck">
-            <label for="15mins"> 15 mins </label>
+            <label for="15mins" style="font-family: 'Raleway';"> 15 mins </label>
             <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(15)">
-            <label for="30mins" style="margin-left: 4.5em">30mins</label>
+            <label for="30mins" style="margin-left: 4.5em;font-family:'Raleway';">30mins</label>
             <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(30)">
-            <label for="45mins" style="margin-left: 4.5em">45mins</label>
+            <label for="45mins" style="margin-left: 4.5em;font-family: 'Raleway';">45mins</label>
             <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(45)">
-            <label for="60mins" style="margin-left: 4.5em">1 hr</label>
+            <label for="60mins" style="margin-left: 4.5em;font-family: 'Raleway';">1 hr</label>
             <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(60)">
           </div>
+          <br>
           <div class="form-group">
-            <label for="exampleInputEndTime">Enter End Time </label>
+            <label for="exampleInputEndTime" style="font-family: 'Raleway';">Enter End Time </label>
             <input type="time" formControlName="endTime" class="form-control" id="exampleInputEndTime"
               placeholder="Enter end time " [value]="newEndTime" [ngModel]="newEndTime">
           </div>
+          <br>
           <div class="form-group">
-            <label for="description">Description of Meeting</label>
+            <label for="capacity" style="font-family: 'Raleway';">Enter no of people </label>
+            <input type="number" formControlName="personInMeet" class="form-control" id="capacity"
+               min="1" max="10">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="description" style="font-family: 'Raleway';">Description of Meeting </label>
             <textarea id="description" style="vertical-align:middle"></textarea>
           </div>
         </form>

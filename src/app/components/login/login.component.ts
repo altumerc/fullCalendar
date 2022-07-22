@@ -1,41 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {FormBuilder,FormGroup, NgForm} from '@angular/forms';
-import  {ApiService} from '../../api.service';
-
+import { Component, OnInit, ResolvedReflectiveFactory } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { ApiService } from '../../api.service'
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  formValue !: FormGroup;
-  constructor(private router:Router,private formbuilder: FormBuilder,private apiService:ApiService) {
-   }
-   goToPage(){
-     this.router.navigateByUrl('calendar');
-   }
-   model={
-     e_id:'',
-     pwd:''
-   };
+export class LoginComponent{
+  //items = this.apiService.getItems();
+  checkoutForm = this.formbuilder.group(
+    {
+      e_id: '',
+      pwd: ''
+    }
+  );
+  constructor(
+    private router: Router, private formbuilder: FormBuilder, private apiService: ApiService) { }
 
-  ngOnInit(): void {
-    this.formValue = this.formbuilder.group(
-      {
-        e_id:[''],
-        pwd:['']
+  onSubmit(): void {
+    if(this.checkoutForm.value.e_id=='1111' && this.checkoutForm.value.pwd=='iskra1234'){
+      this.router.navigateByUrl('calendar')
+    }
+    else{
+      alert("Incorrect id and password")
+    }
+  }
+  visible: boolean = true;
+  changetype: boolean = true;
+  loginTrue!: boolean
+  toggle() {
+    this.visible = !this.visible;
+    this.changetype = !this.changetype;
+  }
+  /* onSubmit(form: NgForm) {
+    alert(form.value)
+    this.apiService.login(form.value).subscribe(response => {
+      this.loginTrue = response
+      if (this.loginTrue == true) {
+        this.router.navigateByUrl('calendar')
       }
-    )
+    }) */
   }
-  visible:boolean=true;
-  changetype:boolean=true;
-  toggle(){
-    this.visible=!this.visible;
-    this.changetype=!this.changetype;
-  }
-  onSubmit(form:NgForm){
-
-  }
-}
