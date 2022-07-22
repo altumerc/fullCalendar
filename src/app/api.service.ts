@@ -10,6 +10,12 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ApiService {
+  modalDate: any;
+  modalStartTime: any;
+  titleOfEventInMeeting: any;
+  nameOfMeetingHost: any;
+  startTimeForMeeting: any;
+  endTimeForMeeting: any;
   getItems() {
     throw new Error('Method not implemented.');
   }
