@@ -20,7 +20,7 @@ export class ModalComponent implements OnInit,AfterViewInit {
   timeForCalendar = this.funCall.modalStartTime
   titleOfEvent = this.funCall.titleOfEventInMeeting
   nameOfEventHost = this.funCall.nameOfMeetingHost
-  
+
 
   eventDataModel: ModalData = new ModalData()
   constructor(private formbuilder: FormBuilder, public api: ApiService, public funCall : CalendarComponent) { }
@@ -76,5 +76,9 @@ export class ModalComponent implements OnInit,AfterViewInit {
     console.log('working')
     let ref = document.getElementById('cancelEventModalDetails')
     ref?.click()
+  }
+
+  scheduleMeet(){
+    this.funCall.handleDateClick()
   }
 }

@@ -1,39 +1,19 @@
-<button type="button" id="calendarModal" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"></button>
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Meeting Information</h5>
-      </div>
-      <div class="modal-body">
-        <p> The {{this.api.titleOfEventInMeeting}} is booked by {{this.api.nameOfMeetingHost}}</p>
-        <p> from {{this.api.startTimeForMeeting}} to {{this.api.endTimeForMeeting}}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-      </div>
-    </div>
-  </div>
-</div>
-
 <nav class="navbar navbar-light bg-dark" style="height: 13vh;">
-  <div class="container-fluid">
+  <div id="navBarId" class="container-fluid">
     <img src="https://www.iskraemeco.com/app/uploads/2019/09/ie-favicon-red.png" alt="" width="26" height="24"
       class="d-inline-block">
     <span style="color: white;font-family:'Raleway',sans-serif;font-size: 30px;font-weight: bold;">Conference Management
       System</span>
     <div class="d-flex">
       <button type="button" id="divClick" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"
-        class="btn btn-succes" style="color: orange">Schedule Meeting</button>
+      class="btn btn-succes" style="color: orange">Schedule Meeting</button>
     </div>
   </div>
 </nav>
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div id="formForEvent" class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Select the time for meeting</h5>
@@ -94,18 +74,27 @@
   </div>
   <div>
   </div>
-</div> 
+</div>
 
-
-
-
-
-
-
-
-
-
-
+<button type="button" id="calendarModal" data-bs-toggle="modal" data-bs-target="#exampleModalCenterInfo"></button>
+<div class="modal fade" id="exampleModalCenterInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div id="calendarModalForEvent" class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Meeting Information</h5>
+      </div>
+      <div class="modal-body">
+        <p> The {{this.api.titleOfEventInMeeting}} is booked by {{this.api.nameOfMeetingHost}}</p>
+        <p> from {{this.api.startTimeForMeeting}} to {{this.api.endTimeForMeeting}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
 <!-- <div>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm">Small
         modal</button>

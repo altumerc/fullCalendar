@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import {RouterModule} from '@angular/router';
 
+
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
   timeGridPlugin,
@@ -26,7 +27,7 @@ FullCalendarModule.registerPlugins([
     AppComponent,
     ModalComponent,
     LoginComponent,
-    CalendarComponent
+    CalendarComponent,
   ],
   imports: [
     BrowserModule,
