@@ -17,6 +17,8 @@ export class ApiService {
   nameOfMeetingHost: String = "";
   startTimeForMeeting: String = "";
   endTimeForMeeting: String = "";
+  dateForEventModal: String ="";
+  capacityForMeeting: String = ""
 
   constructor(private http: HttpClient) { }
 

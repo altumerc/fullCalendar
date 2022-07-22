@@ -1,12 +1,12 @@
 <nav class="navbar navbar-light bg-dark" style="height: 13vh;">
   <div id="navBarId" class="container-fluid">
-    <img src="https://www.iskraemeco.com/app/uploads/2019/09/ie-favicon-red.png" alt="" width="26" height="24"
+    <img src="https://www.iskraemeco.com/app/uploads/2019/09/ie-favicon-red.png" alt="" width="46" height="44"
       class="d-inline-block">
-    <span style="color: white;font-family:'Raleway',sans-serif;font-size: 30px;font-weight: bold;">Conference Management
+    <span style="color: white;font-family:'Raleway',sans-serif;font-size: 44px;font-weight: bold;">Conference Management
       System</span>
     <div class="d-flex">
       <button type="button" id="divClick" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"
-      class="btn btn-succes" style="color: orange">Schedule Meeting</button>
+      class="btn btn-succes" style="color: orange;font-weight: bold; font-size: larger;">Schedule Meeting</button>
     </div>
   </div>
 </nav>
@@ -24,50 +24,51 @@
       <div class="modal-body">
         <form [formGroup]="formValue" id="form">
           <div class="form-group">
-            <label for=" nameOfHost" style="font-family: 'Raleway';">Name of Employee</label>
-            <input type="text" formControlName="nameOfOrganiser" class="form-control" id="nameOfHost" style="font-family: 'Raleway';font-weight: lighter;">
+            <label for=" nameOfHost" style="font-family: 'Raleway';padding-bottom: 10px;">Name of Employee</label>
+            <br>
+            <input type="text" formControlName="nameOfOrganiser" class="form-control" id="nameOfHost" style=" font-family: 'Raleway';font-weight: lighter;">
           </div>
           <br>
           <div class="form-group">
-            <label for="exampleInputDate" style="font-family: 'Raleway';">Enter Date</label>
+            <label for="exampleInputDate" style="font-family: 'Raleway';padding-bottom: 10px">Enter Date</label>
             <input type="date" formControlName="dateMeeting" class="form-control" id="exampleInputDate"
               placeholder="Enter Date" [value]="this.api.modalDate" [ngModel]="this.api.modalDate">
           </div>
           <br>
           <div class="form-group">
-            <label for="exampleInputStartTime" style="font-family: 'Raleway';">Enter Start Time</label>
+            <label for="exampleInputStartTime" style="font-family: 'Raleway';padding-bottom: 10px">Enter Start Time</label>
             <input type="time" formControlName="startTime" class="form-control" id="exampleInputStartTime"
               placeholder="Enter start time" [value]="this.api.modalStartTime" [ngModel]="this.api.modalStartTime">
           </div>
           <br>
-          <div><label for="durationOfMeeting" style="font-family: 'Raleway';">Enter the Duration Of Meeting</label></div>
+          <div><label for="durationOfMeeting" style="font-family: 'Raleway';padding-bottom: 10px;">Enter the Duration Of Meeting</label></div>
         
           <div class="timeCheck">
             <label for="15mins" style="font-family: 'Raleway';"> 15 mins </label>
-            <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(15)">
-            <label for="30mins" style="margin-left: 4.5em;font-family:'Raleway';">30mins</label>
-            <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(30)">
-            <label for="45mins" style="margin-left: 4.5em;font-family: 'Raleway';">45mins</label>
-            <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(45)">
-            <label for="60mins" style="margin-left: 4.5em;font-family: 'Raleway';">1 hr</label>
-            <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(60)">
+            <input style="margin: 0px 0px 0px 10px;" type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(15)">
+            <label for="30mins" style="margin-left: 3em;font-family:'Raleway';">30mins</label>
+            <input type="radio" style="margin: 0px 0px 0px 10px;"name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(30)">
+            <label for="45mins" style ="margin-left: 4em;font-family: 'Raleway';">45mins</label  >
+            <input type="radio" style="margin: 0px 0px 0px 10px;" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(45)">
+            <label for="60mins" style="margin-left: 4em;font-family: 'Raleway';">1 hr</label>
+            <input type="radio" style="margin: 0px 0px 0px 10px;"name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(60)">
           </div>
           <br>
           <div class="form-group">
-            <label for="exampleInputEndTime" style="font-family: 'Raleway';">Enter End Time </label>
+            <label for="exampleInputEndTime" style="font-family: 'Raleway';padding-bottom: 10px">Enter End Time </label>
             <input type="time" formControlName="endTime" class="form-control" id="exampleInputEndTime"
               placeholder="Enter end time " [value]="newEndTime" [ngModel]="newEndTime">
           </div>
           <br>
           <div class="form-group">
-            <label for="capacity" style="font-family: 'Raleway';">Enter no of people </label>
+            <label for="capacity" style="font-family: 'Raleway';padding-bottom: 10px">Enter no of people </label>
             <input type="number" formControlName="personInMeet" class="form-control" id="capacity"
                min="1" max="10">
           </div>
           <br>
           <div class="form-group">
-            <label for="description" style="font-family: 'Raleway';">Description of Meeting </label>
-            <textarea id="description" style="vertical-align:middle"></textarea>
+            <label for="description" style="font-family: 'Raleway'; padding-bottom: 10px;">Description of Meeting </label>
+            <input id="description" style="vertical-align:middle;height: 62px;" class="form-control">
           </div>
         </form>
       </div>
@@ -90,8 +91,8 @@
         <h5 class="modal-title" id="exampleModalLongTitle">Meeting Information</h5>
       </div>
       <div class="modal-body">
-        <p> The {{this.api.titleOfEventInMeeting}} is booked by {{this.api.nameOfMeetingHost}}</p>
-        <p> from {{this.api.startTimeForMeeting}} to {{this.api.endTimeForMeeting}}</p>
+        <p > The {{this.api.titleOfEventInMeeting}} by {{this.api.nameOfMeetingHost}}</p>
+        <p> from {{this.api.startTimeForMeeting}} to {{this.api.endTimeForMeeting}} on {{this.api.dateForEventModal}} with {{this.api.capacityForMeeting}} people</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

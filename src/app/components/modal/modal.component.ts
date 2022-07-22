@@ -72,9 +72,9 @@ export class ModalComponent implements OnInit,AfterViewInit {
         alert("Meeting cannot be scheduled right now")
       })
   }
-  closeEventModal(){
-    console.log('working')
-    let ref = document.getElementById('cancelEventModalDetails')
-    ref?.click()
-  }
+  // closeEventModal(){
+  //   console.log('working')
+  //   let ref = document.getElementById('cancelEventModalDetails')
+  //   ref?.click()
+  // }
 }

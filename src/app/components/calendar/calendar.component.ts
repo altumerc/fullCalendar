@@ -46,7 +46,16 @@ export class CalendarComponent implements OnInit {
     this.apiservice.getEventsStart().subscribe((data) => {
       this.calendarOptions = {
         initialView: 'timeGridWeek',
+        // dayHeaderContent:{
+        //   day: 'numeric',weekday: 'short', month: 'numeric',  omitCommas: true 
+        // },
         weekends: false,
+        // titleFormat:{
+        //   day: 'numeric',
+        //   year: 'numeric',
+        //   month: 'long',
+          
+        // },
         slotDuration: "00:15:00",
         slotMinTime: "09:00:00",
         slotMaxTime: "21:00:00",
@@ -58,7 +67,7 @@ export class CalendarComponent implements OnInit {
         //editable:true,
         selectable: true,
         events: data,
-        eventColor: 'pink',
+        eventColor: '#034457',
         dateClick: this.handleDateClick.bind(this),
         eventClick: this.handleEventClick.bind(this)
         //eventMouseEnter: this.handleEventClick.bind(this)
@@ -78,7 +87,7 @@ export class CalendarComponent implements OnInit {
     // var popup = document.getElementById('divClick');
     //   popup.classList.toggle("show")
     //.click();
-    console.log('handle date click works')
+    //console.log('handle date click works')
     // document.getElementById('divClick').addEventListener('click', function (e) {
     //   e.stopPropagation();
     // });
@@ -91,10 +100,13 @@ export class CalendarComponent implements OnInit {
     this.apiservice.nameOfMeetingHost = name
     this.apiservice.startTimeForMeeting = info.event.start.toLocaleTimeString()
     this.apiservice.endTimeForMeeting = info.event.end.toLocaleTimeString()
+    this.apiservice.capacityForMeeting = info.event.extendedProps.cap
+    this.apiservice.dateForEventModal = info.event.extendedProps.startStr.slice(0,10)
+    //console.log(this.apiservice.descriptionForMeeting)
     // document.getElementById('calendarModal').addEventListener('click', function (e) {
     //   e.stopPropagation();
     // });
-    console.log('handle event click works')
+    //console.log('handle event click works')
       // var popup = document.getElementById('calendarModal');
       // popup.classList.toggle("show")
     
