@@ -13,7 +13,7 @@ import { map } from 'rxjs/operators';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ModalComponent } from '../modal/modal.component';
-import { EventData} from '../calendar/eventData.model'
+import { EventData } from '../calendar/eventData.model'
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -21,14 +21,14 @@ import { EventData} from '../calendar/eventData.model'
 })
 export class CalendarComponent implements OnInit {
 
-    modalDate : String = ""
-    modalStartTime: String = "";
-    titleOfEventInMeeting: String ="";
-    nameOfMeetingHost: String ="";
-    startTimeForMeeting: String ="";
-    endTimeForMeeting:String =""; 
+  modalDate: String = ""
+  modalStartTime: String = "";
+  titleOfEventInMeeting: String = "";
+  nameOfMeetingHost: String = "";
+  startTimeForMeeting: String = "";
+  endTimeForMeeting: String = "";
   calendarVisible = true;
-  eventData : EventData[] 
+  eventData: EventData[]
 
   calendarOptions: CalendarOptions = {
     plugins: [interactionPlugin, daygridPlugin, timeGridPlugin],
@@ -40,8 +40,8 @@ export class CalendarComponent implements OnInit {
 
   @ViewChild('divClick') divClick: ElementRef;
 
-  @ViewChild('calendarModal') calendarModal : ElementRef;
-  
+  @ViewChild('calendarModal') calendarModal: ElementRef;
+
   ngOnInit() {
     this.apiservice.getEventsStart().subscribe((data) => {
       this.calendarOptions = {
@@ -58,25 +58,31 @@ export class CalendarComponent implements OnInit {
         //editable:true,
         selectable: true,
         events: data,
-        eventColor: 'pink' ,
+        eventColor: 'pink',
+
         dateClick: this.handleDateClick.bind(this),
         eventClick: this.handleEventClick.bind(this)
       }
     })
   }
 
-  handleDateClick(info){
+  handleDateClick(info) {
     var dateForCalendarInModal = info.dateStr.slice(0, 10).toString()
     //console.log(dateForCalendarInModal)
-    this.apiservice.modalDate = dateForCalendarInModal 
-    //console.log(this.modalDate) 
-    var timeForCalendarInModal= info.dateStr.slice(11, 19).toString()
-    this.apiservice.modalStartTime = timeForCalendarInModal
+    this.apiservice.modalDate = dateForCalendarInModal
+    console.log(this.apiservice.modalDate)
+    var timeForCalendarInModal = info.dateStr.slice(11, 19).toString()
+    const timeForCalendarInModal12hr = new Date('1970-01-01T' + timeForCalendarInModal + 'Z')
+      .toLocaleTimeString('en-UK',
+        { timeZone: 'UTC', hour12: false, hour: 'numeric', minute: 'numeric' }
+      );
+      console.log(timeForCalendarInModal12hr)
+    this.apiservice.modalStartTime = timeForCalendarInModal12hr
     document.getElementById('divClick').click();
-}
+  }
 
-  handleEventClick(info){
-    var titleOfEvent  = info.event.title
+  handleEventClick(info) {
+    var titleOfEvent = info.event.title
     this.apiservice.titleOfEventInMeeting = titleOfEvent
     var name = info.event.classNames
     this.apiservice.nameOfMeetingHost = name
@@ -88,8 +94,8 @@ export class CalendarComponent implements OnInit {
     //   //var cap = info.event.classNames
     //   //var names = response.map(n => n.name)
     //   //var capacity = response.map(cap => cap.c)
-      
+
     //   this.eventData = response
     // })
-  }  
+  }
 }

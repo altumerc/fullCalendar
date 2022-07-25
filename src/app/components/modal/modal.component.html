@@ -1,18 +1,18 @@
-<button type="button" id="calendarModal" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"></button>
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
+<div class="modal fade" id="exampleModalCenterInfo" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Meeting Information</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle" style="font-family: 'Raleway';">Meeting Information</h5>
       </div>
       <div class="modal-body">
-        <p> The {{this.api.titleOfEventInMeeting}} is booked by {{this.api.nameOfMeetingHost}}</p>
-        <p> from {{this.api.startTimeForMeeting}} to {{this.api.endTimeForMeeting}}</p>
+        <p style="font-family: 'Raleway'"> The {{this.api.titleOfEventInMeeting}} is booked by
+          {{this.api.nameOfMeetingHost}}</p>
+        <p style="font-family: 'Raleway'"> from {{this.api.startTimeForMeeting}} to {{this.api.endTimeForMeeting}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -30,6 +30,7 @@
     </div>
   </div>
 </nav>
+<button type="button" id="calendarModal" data-bs-toggle="modal" data-bs-target="#exampleModalCenterInfo"></button>
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
@@ -45,24 +46,31 @@
         <form [formGroup]="formValue" id="form">
           <div class="form-group">
             <label for=" nameOfHost" style="font-family: 'Raleway';">Name of Employee</label>
-            <input type="text" formControlName="nameOfOrganiser" class="form-control" id="nameOfHost" style="font-family: 'Raleway';font-weight: lighter;">
+            <input type="text" formControlName="nameOfOrganiser" class="form-control" id="nameOfHost"
+              style="font-family: 'Raleway';font-weight: lighter;">
           </div>
           <br>
           <div class="form-group">
             <label for="exampleInputDate" style="font-family: 'Raleway';">Enter Date</label>
             <input type="date" formControlName="dateMeeting" class="form-control" id="exampleInputDate"
-              placeholder="Enter Date" [value]="dateForCalendar" [ngModel]="dateForCalendar">
               placeholder="Enter Date" [value]="this.api.modalDate" [ngModel]="this.api.modalDate">
           </div>
           <br>
           <div class="form-group">
             <label for="exampleInputStartTime" style="font-family: 'Raleway';">Enter Start Time</label>
-            <input type="time" formControlName="startTime" class="form-control" id="exampleInputStartTime"
-              placeholder="Enter start time" [value]="this.api.modalStartTime" [ngModel]="this.api.modalStartTime">
+            <!-- <input class="form-control" [ngxTimepicker]="picker" formControlName="startTime" id="exampleInputStartTime"
+            placeholder="Enter start time" [value]="this.api.modalStartTime" [ngModel]="this.api.modalStartTime">
+            <ngx-material-timepicker #picker></ngx-material-timepicker> -->
+            <input class="form-control" [ngxTimepicker]="picker" formControlName="startTime" id="exampleInputStartTime"
+            placeholder="Enter start time" [value]="this.api.modalStartTime" [ngModel]="this.api.modalStartTime" [format]="24">
+            <ngx-material-timepicker #picker></ngx-material-timepicker> 
+
+            <!-- <input type="time" > -->
           </div>
           <br>
-          <div><label for="durationOfMeeting" style="font-family: 'Raleway';">Enter the Duration Of Meeting</label></div>
-        
+          <div><label for="durationOfMeeting" style="font-family: 'Raleway';">Enter the Duration Of Meeting</label>
+          </div>
+
           <div class="timeCheck">
             <label for="15mins" style="font-family: 'Raleway';"> 15 mins </label>
             <input type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(15)">
@@ -76,19 +84,21 @@
           <br>
           <div class="form-group">
             <label for="exampleInputEndTime" style="font-family: 'Raleway';">Enter End Time </label>
-            <input type="time" formControlName="endTime" class="form-control" id="exampleInputEndTime"
-              placeholder="Enter end time " [value]="newEndTime" [ngModel]="newEndTime">
+            
+            <input class="form-control" [ngxTimepicker]="picker2" formControlName="endTime" class="form-control" id="exampleInputEndTime"
+              placeholder="Enter end time " [value]="newEndTime" [ngModel]="newEndTime" [format]="24">
+              <ngx-material-timepicker #picker2></ngx-material-timepicker>
+
           </div>
           <br>
           <div class="form-group">
             <label for="capacity" style="font-family: 'Raleway';">Enter no of people </label>
-            <input type="number" formControlName="personInMeet" class="form-control" id="capacity"
-               min="1" max="10">
+            <input type="number" formControlName="personInMeet" class="form-control" id="capacity" min="1" max="10">
           </div>
           <br>
           <div class="form-group">
             <label for="description" style="font-family: 'Raleway';">Description of Meeting </label>
-            <textarea id="description" style="vertical-align:middle"></textarea>
+            <textarea id="description" class="form-control" style="vertical-align:right"></textarea>
           </div>
         </form>
       </div>

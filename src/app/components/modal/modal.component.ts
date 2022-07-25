@@ -6,6 +6,7 @@ import { ModalData } from './modalData.model'
 import { ApiService } from 'src/app/api.service'
 import { CalendarComponent } from '../calendar/calendar.component';
 
+
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -13,7 +14,6 @@ import { CalendarComponent } from '../calendar/calendar.component';
 })
 
 export class ModalComponent implements OnInit,AfterViewInit {
-
   formValue !: FormGroup
   newEndTime: String = ""
   dateForCalendar = this.funCall.modalDate

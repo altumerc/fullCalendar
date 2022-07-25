@@ -20,7 +20,7 @@ export class LoginComponent{
     private router: Router, private formbuilder: FormBuilder, private apiService: ApiService) { }
 
   onSubmit(): void {
-    if(this.checkoutForm.value.e_id=='1111' && this.checkoutForm.value.pwd=='iskra1234'){
+    if(this.checkoutForm.value.e_id=='admin' && this.checkoutForm.value.pwd=='iskra1234'){
       this.router.navigateByUrl('calendar')
     }
     else{
