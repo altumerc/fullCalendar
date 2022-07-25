@@ -69,7 +69,9 @@ export class ModalComponent implements OnInit,AfterViewInit {
         window.location.reload()
       }, err => {
         console.log(err)
-        alert("Meeting cannot be scheduled right now")
+        alert("Meeting cannot be scheduled right now as room is already booked")
+        this.formValue.reset()
+        window.location.reload()
       })
   }
   // closeEventModal(){

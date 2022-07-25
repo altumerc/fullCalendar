@@ -4,6 +4,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import daygridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction'
+//import momentPlugin from '@fullcalendar/moment';
 import { CalendarOptions, DateSelectArg, EventClickArg, EventApi, EventInput } from '@fullcalendar/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from 'src/app/api.service';
@@ -31,7 +32,7 @@ export class CalendarComponent implements OnInit {
   eventData: EventData[]
 
   calendarOptions: CalendarOptions = {
-    plugins: [interactionPlugin, daygridPlugin, timeGridPlugin],
+    plugins: [interactionPlugin, daygridPlugin, timeGridPlugin,],
     weekends: false,
     initialView: 'timeGridWeek',
   }
@@ -46,16 +47,7 @@ export class CalendarComponent implements OnInit {
     this.apiservice.getEventsStart().subscribe((data) => {
       this.calendarOptions = {
         initialView: 'timeGridWeek',
-        // dayHeaderContent:{
-        //   day: 'numeric',weekday: 'short', month: 'numeric',  omitCommas: true 
-        // },
         weekends: false,
-        // titleFormat:{
-        //   day: 'numeric',
-        //   year: 'numeric',
-        //   month: 'long',
-          
-        // },
         slotDuration: "00:15:00",
         slotMinTime: "09:00:00",
         slotMaxTime: "21:00:00",
@@ -64,13 +56,13 @@ export class CalendarComponent implements OnInit {
           center: 'title',
           right: 'timeGridWeek,timeGridDay'
         },
+        aspectRatio: 1.7,
         //editable:true,
         selectable: true,
         events: data,
         eventColor: '#034457',
         dateClick: this.handleDateClick.bind(this),
         eventClick: this.handleEventClick.bind(this)
-        //eventMouseEnter: this.handleEventClick.bind(this)
       }
     })
   }
@@ -82,6 +74,7 @@ export class CalendarComponent implements OnInit {
     //console.log(this.modalDate) 
     var timeForCalendarInModal = info.dateStr.slice(11, 19).toString()
     this.apiservice.modalStartTime = timeForCalendarInModal
+    console.log(timeForCalendarInModal)
 
     document.getElementById('divClick').click()
     // var popup = document.getElementById('divClick');
@@ -120,6 +113,5 @@ export class CalendarComponent implements OnInit {
 
     //   this.eventData = response
     // })
-  }
-  
+  } 
 }
