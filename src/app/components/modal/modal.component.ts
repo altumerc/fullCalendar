@@ -20,7 +20,8 @@ export class ModalComponent implements OnInit,AfterViewInit {
   timeForCalendar = this.funCall.modalStartTime
   titleOfEvent = this.funCall.titleOfEventInMeeting
   nameOfEventHost = this.funCall.nameOfMeetingHost
-
+  
+  errorMsgNumber : number
 
   eventDataModel: ModalData = new ModalData()
   constructor(private formbuilder: FormBuilder, public api: ApiService, public funCall : CalendarComponent) { }
@@ -68,15 +69,38 @@ export class ModalComponent implements OnInit,AfterViewInit {
         this.formValue.reset()
         window.location.reload()
       }, err => {
+        //this.errorMsg = err.err.message
         console.log(err)
-        alert("Meeting cannot be scheduled right now as room is already booked")
-        this.formValue.reset()
-        window.location.reload()
+        this.errorMsgNumber = err.error.status
+        console.log(this.errorMsgNumber)
+        //alert(err.error.message)
+        if(err.error.status ==500)
+        {
+          console.log(err.error.message)
+          alert(err.error.message)
+          let ref = document.getElementById('cancel')
+          ref?.click()
+          window.location.reload()
+          this.formValue.reset()
+        }
+        else if(err.error.status == 400)
+        {
+          console.log(err.error.message)
+          alert(err.error.message)
+        }
+        //alert("Meeting cannot be scheduled right now as room is already booked")
+        //this.formValue.reset()
+        // let ref = document.getElementById('cancel')
+        // ref?.click()
+        //window.location.reload()
+        //this.ngOnInit()
       })
   }
+
   // closeEventModal(){
-  //   console.log('working')
-  //   let ref = document.getElementById('cancelEventModalDetails')
+  //   //console.log('working')
+  //   let ref = document.getElementById('cancel')
   //   ref?.click()
+  //   this.formValue.reset()
   // }
 }

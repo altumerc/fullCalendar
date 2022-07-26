@@ -34,8 +34,20 @@ export class CalendarComponent implements OnInit {
   calendarOptions: CalendarOptions = {
     plugins: [interactionPlugin, daygridPlugin, timeGridPlugin,],
     weekends: false,
-    initialView: 'timeGridWeek',
-  }
+    initialView: 'timeGridWeek'
+    //coloumHeaderFormat: '',
+    // views: {
+    //   columnHeaderFormat: {
+    //     month: 'ddd',
+    //     week: 'ddd d/M',
+    //     day: 'dddd d/M'
+    // }
+      // coloumnHeader: { // name of view
+      //   //titleFormat: 'YYYY, MM, DD',
+      //   coloumnHeaderFormat : 'ddd D/M'
+      //   // other view-specific options here
+      // }
+    }
 
   constructor(public apiservice: ApiService) { }
 
@@ -48,6 +60,8 @@ export class CalendarComponent implements OnInit {
       this.calendarOptions = {
         initialView: 'timeGridWeek',
         weekends: false,
+        //coloumnHeader: false,
+        dayHeaderFormat : {weekday:'short' ,day: 'numeric',month:'2-digit', },
         slotDuration: "00:15:00",
         slotMinTime: "09:00:00",
         slotMaxTime: "21:00:00",
@@ -73,8 +87,16 @@ export class CalendarComponent implements OnInit {
     this.apiservice.modalDate = dateForCalendarInModal
     //console.log(this.modalDate) 
     var timeForCalendarInModal = info.dateStr.slice(11, 19).toString()
-    this.apiservice.modalStartTime = timeForCalendarInModal
-    console.log(timeForCalendarInModal)
+    const timeForCalendarInModal12hr = new Date('1970-01-01T' + timeForCalendarInModal + 'Z')
+      .toLocaleTimeString('en-UK',
+        { timeZone: 'UTC', hour12: false, hour: 'numeric', minute: 'numeric' }
+      );
+    // console.log(timeForCalendarInModal12hr)
+    this.apiservice.modalStartTime = timeForCalendarInModal12hr
+
+
+    //this.apiservice.modalStartTime = timeForCalendarInModal
+    //console.log(timeForCalendarInModal)
 
     document.getElementById('divClick').click()
     // var popup = document.getElementById('divClick');
@@ -94,15 +116,15 @@ export class CalendarComponent implements OnInit {
     this.apiservice.startTimeForMeeting = info.event.start.toLocaleTimeString()
     this.apiservice.endTimeForMeeting = info.event.end.toLocaleTimeString()
     this.apiservice.capacityForMeeting = info.event.extendedProps.cap
-    this.apiservice.dateForEventModal = info.event.extendedProps.startStr.slice(0,10)
+    this.apiservice.dateForEventModal = info.event.extendedProps.startStr.slice(0, 10)
     //console.log(this.apiservice.descriptionForMeeting)
     // document.getElementById('calendarModal').addEventListener('click', function (e) {
     //   e.stopPropagation();
     // });
     //console.log('handle event click works')
-      // var popup = document.getElementById('calendarModal');
-      // popup.classList.toggle("show")
-    
+    // var popup = document.getElementById('calendarModal');
+    // popup.classList.toggle("show")
+
     document.getElementById('calendarModal').click()
     //console.log(a)
     // this.apiservice.getDataForModal().subscribe(response => {
@@ -113,5 +135,5 @@ export class CalendarComponent implements OnInit {
 
     //   this.eventData = response
     // })
-  } 
+  }
 }

@@ -6,7 +6,7 @@
       System</span>
     <div class="d-flex">
       <button type="button" id="divClick" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"
-      class="btn btn-succes" style="color: orange;font-weight: bold; font-size: larger;">Schedule Meeting</button>
+        class="btn btn-succes" style="color: orange;font-weight: bold; font-size: larger;">Schedule Meeting</button>
     </div>
   </div>
 </nav>
@@ -22,11 +22,12 @@
         </button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="formValue" id="form">
+        <form [formGroup]="formValue" id="form" ngNativeValidate #form>
           <div class="form-group">
             <label for=" nameOfHost" style="font-family: 'Raleway';padding-bottom: 10px;">Name of Employee</label>
             <br>
-            <input type="text" formControlName="nameOfOrganiser" class="form-control" id="nameOfHost" style=" font-family: 'Raleway';font-weight: lighter;">
+            <input type="text" formControlName="nameOfOrganiser" class="form-control" id="nameOfHost"
+              style=" font-family: 'Raleway';font-weight: lighter;" required>
           </div>
           <br>
           <div class="form-group">
@@ -36,45 +37,61 @@
           </div>
           <br>
           <div class="form-group">
-            <label for="exampleInputStartTime" style="font-family: 'Raleway';padding-bottom: 10px">Enter Start Time</label>
-            <input type="time" formControlName="startTime" class="form-control" id="exampleInputStartTime"
-              placeholder="Enter start time" [value]="this.api.modalStartTime" [ngModel]="this.api.modalStartTime">
+            <label for="exampleInputStartTime" style="font-family: 'Raleway';padding-bottom: 10px">Enter Start
+              Time</label>
+            <input class="form-control" [ngxTimepicker]="picker" formControlName="startTime" id="exampleInputStartTime"
+              placeholder="Enter start time" [value]="this.api.modalStartTime" [ngModel]="this.api.modalStartTime"
+              [format]="24">
+            <ngx-material-timepicker #picker></ngx-material-timepicker>
+            <!-- <input type="time" formControlName="startTime" class="form-control" id="exampleInputStartTime"
+              placeholder="Enter start time" [value]="this.api.modalStartTime" [ngModel]="this.api.modalStartTime"> -->
           </div>
           <br>
-          <div><label for="durationOfMeeting" style="font-family: 'Raleway';padding-bottom: 10px;">Enter the Duration Of Meeting</label></div>
-        
+          <div><label for="durationOfMeeting" style="font-family: 'Raleway';padding-bottom: 10px;">Enter the Duration
+              Of
+              Meeting</label></div>
+
           <div class="timeCheck">
             <label for="15mins" style="font-family: 'Raleway';"> 15 mins </label>
-            <input style="margin: 0px 0px 0px 10px;" type="radio" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(15)">
+            <input style="margin: 0px 0px 0px 10px;" type="radio" name="durationOfMeeting" id="durationOfMeeting"
+              (click)="addMins(15)">
             <label for="30mins" style="margin-left: 3em;font-family:'Raleway';">30mins</label>
-            <input type="radio" style="margin: 0px 0px 0px 10px;"name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(30)">
-            <label for="45mins" style ="margin-left: 4em;font-family: 'Raleway';">45mins</label  >
-            <input type="radio" style="margin: 0px 0px 0px 10px;" name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(45)">
+            <input type="radio" style="margin: 0px 0px 0px 10px;" name="durationOfMeeting" id="durationOfMeeting"
+              (click)="addMins(30)">
+            <label for="45mins" style="margin-left: 4em;font-family: 'Raleway';">45mins</label>
+            <input type="radio" style="margin: 0px 0px 0px 10px;" name="durationOfMeeting" id="durationOfMeeting"
+              (click)="addMins(45)">
             <label for="60mins" style="margin-left: 4em;font-family: 'Raleway';">1 hr</label>
-            <input type="radio" style="margin: 0px 0px 0px 10px;"name="durationOfMeeting" id="durationOfMeeting" (click)="addMins(60)">
+            <input type="radio" style="margin: 0px 0px 0px 10px;" name="durationOfMeeting" id="durationOfMeeting"
+              (click)="addMins(60)">
           </div>
           <br>
           <div class="form-group">
-            <label for="exampleInputEndTime" style="font-family: 'Raleway';padding-bottom: 10px">Enter End Time </label>
-            <input type="time" formControlName="endTime" class="form-control" id="exampleInputEndTime"
-              placeholder="Enter end time " [value]="newEndTime" [ngModel]="newEndTime">
+            <label for="exampleInputEndTime" style="font-family: 'Raleway';padding-bottom: 10px">Enter End Time
+            </label>
+            <!-- <input type="time" formControlName="endTime" class="form-control" id="exampleInputEndTime"
+              placeholder="Enter end time " [value]="newEndTime" [ngModel]="newEndTime"> -->
+            <input class="form-control" [ngxTimepicker]="picker2" formControlName="endTime" id="exampleInputEndTime"
+              placeholder="Enter end time" [value]="newEndTime" [ngModel]="newEndTime" [format]="24">
+            <ngx-material-timepicker #picker2></ngx-material-timepicker>
           </div>
           <br>
           <div class="form-group">
             <label for="capacity" style="font-family: 'Raleway';padding-bottom: 10px">Enter no of people </label>
-            <input type="number" formControlName="personInMeet" class="form-control" id="capacity"
-               min="1" max="10">
+            <input type="number" formControlName="personInMeet" class="form-control" id="capacity" min="1" max="10">
           </div>
           <br>
           <div class="form-group">
-            <label for="description" style="font-family: 'Raleway'; padding-bottom: 10px;">Description of Meeting </label>
-            <input id="description" style="vertical-align:middle;height: 62px;" class="form-control">
+            <label for="description" style="font-family: 'Raleway'; padding-bottom: 10px;">Description of Meeting
+            </label>
+            <textarea id="description" style="vertical-align:right;height: 62px;" class="form-control"></textarea>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" (click)="postDataOfEvent()" class="btn btn-primary">Submit</button>
+        <button type="submit" (click)=" postDataOfEvent()"  class="btn btn-primary">Submit</button>
+         
       </div>
     </div>
   </div>
@@ -82,17 +99,18 @@
   </div>
 </div>
 
-<button type="button" id="calendarModal" data-bs-toggle="modal" data-bs-target="#exampleModalCenterInfo"></button>
-<div class="modal fade" id="exampleModalCenterInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
+<button  hidden type="button" id="calendarModal" data-bs-toggle="modal" data-bs-target="#exampleModalCenterInfo"></button>
+<div class="modal fade" id="exampleModalCenterInfo" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div id="calendarModalForEvent" class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Meeting Information</h5>
       </div>
       <div class="modal-body">
-        <p > The {{this.api.titleOfEventInMeeting}} by {{this.api.nameOfMeetingHost}}</p>
-        <p> from {{this.api.startTimeForMeeting}} to {{this.api.endTimeForMeeting}} on {{this.api.dateForEventModal}} with {{this.api.capacityForMeeting}} people</p>
+        <p> The {{this.api.titleOfEventInMeeting}} by {{this.api.nameOfMeetingHost}}</p>
+        <p> from {{this.api.startTimeForMeeting}} to {{this.api.endTimeForMeeting}} on {{this.api.dateForEventModal}}
+          with {{this.api.capacityForMeeting}} people</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
