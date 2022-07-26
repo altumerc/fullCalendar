@@ -54,6 +54,7 @@ export class ModalComponent implements OnInit,AfterViewInit {
 
   postDataOfEvent() {
     this.eventDataModel.nameOfOrganiser = this.formValue.value.nameOfOrganiser
+    
     this.eventDataModel.dateMeeting = this.formValue.value.dateMeeting
     this.eventDataModel.startTime = this.formValue.value.startTime
     this.eventDataModel.endTime = this.formValue.value.endTime

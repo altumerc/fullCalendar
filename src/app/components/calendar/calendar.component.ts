@@ -33,10 +33,13 @@ export class CalendarComponent implements OnInit {
   calendarOptions: CalendarOptions = {
     plugins: [interactionPlugin, daygridPlugin, timeGridPlugin],
     weekends: false,
+    nowIndicator:true,
+    now:new Date(),
     initialView: 'timeGridWeek',
   }
 
   constructor(public apiservice: ApiService) { }
+
 
   @ViewChild('divClick') divClick: ElementRef;
 
@@ -55,6 +58,12 @@ export class CalendarComponent implements OnInit {
           center: 'title',
           right: 'timeGridWeek,timeGridDay'
         },
+        /* weekText: { // will produce something like "Tuesday, September 18, 2018"
+          month: 'long',
+          year: 'numeric',
+          day: 'numeric',
+          weekday: 'long'
+        }, */
         //editable:true,
         selectable: true,
         events: data,
@@ -76,7 +85,7 @@ export class CalendarComponent implements OnInit {
       .toLocaleTimeString('en-UK',
         { timeZone: 'UTC', hour12: false, hour: 'numeric', minute: 'numeric' }
       );
-      console.log(timeForCalendarInModal12hr)
+    console.log(timeForCalendarInModal12hr)
     this.apiservice.modalStartTime = timeForCalendarInModal12hr
     document.getElementById('divClick').click();
   }

@@ -30,7 +30,7 @@
     </div>
   </div>
 </nav>
-<button type="button" id="calendarModal" data-bs-toggle="modal" data-bs-target="#exampleModalCenterInfo"></button>
+<button hidden type="button" id="calendarModal" data-bs-toggle="modal" data-bs-target="#exampleModalCenterInfo"></button>
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
@@ -43,11 +43,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="formValue" id="form">
+        <form data-toggle="validator" role="form" [formGroup]="formValue" id="form">
           <div class="form-group">
             <label for=" nameOfHost" style="font-family: 'Raleway';">Name of Employee</label>
             <input type="text" formControlName="nameOfOrganiser" class="form-control" id="nameOfHost"
-              style="font-family: 'Raleway';font-weight: lighter;">
+              style="font-family: 'Raleway';font-weight: lighter">
           </div>
           <br>
           <div class="form-group">
@@ -104,7 +104,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" (click)="postDataOfEvent()" class="btn btn-primary">Submit</button>
+        <button type="submit" (click)="postDataOfEvent()" class="btn btn-primary">Submit</button>
       </div>
     </div>
   </div>
