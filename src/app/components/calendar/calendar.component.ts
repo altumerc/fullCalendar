@@ -60,8 +60,13 @@ export class CalendarComponent implements OnInit {
       this.calendarOptions = {
         initialView: 'timeGridWeek',
         weekends: false,
+        views: {
+          week: {
+            weekday:'short',day: 'numeric', month : 'short'
+          }
+        },
         //coloumnHeader: false,
-        dayHeaderFormat : {weekday:'short' ,day: 'numeric',month:'2-digit', },
+        //dayHeaderFormat : {weekday:'short',month: 'short',day: 'numeric'  },
         slotDuration: "00:15:00",
         slotMinTime: "09:00:00",
         slotMaxTime: "21:00:00",
@@ -71,6 +76,7 @@ export class CalendarComponent implements OnInit {
           right: 'timeGridWeek,timeGridDay'
         },
         aspectRatio: 1.7,
+        scrollTime: '00:00',
         //editable:true,
         selectable: true,
         events: data,
@@ -116,7 +122,9 @@ export class CalendarComponent implements OnInit {
     this.apiservice.startTimeForMeeting = info.event.start.toLocaleTimeString()
     this.apiservice.endTimeForMeeting = info.event.end.toLocaleTimeString()
     this.apiservice.capacityForMeeting = info.event.extendedProps.cap
-    this.apiservice.dateForEventModal = info.event.extendedProps.startStr.slice(0, 10)
+    var d = new Date(info.event.extendedProps.startStr.slice(0, 10)).toUTCString().slice(0,16)
+    this.apiservice.dateForEventModal = d
+    //console.log(d)
     //console.log(this.apiservice.descriptionForMeeting)
     // document.getElementById('calendarModal').addEventListener('click', function (e) {
     //   e.stopPropagation();
