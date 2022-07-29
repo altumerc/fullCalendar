@@ -5,6 +5,7 @@ import { CalendarOptions, DateSelectArg, EventClickArg, EventApi, EventInput } f
 import { ModalData } from './modalData.model'
 import { ApiService } from 'src/app/api.service'
 import { CalendarComponent } from '../calendar/calendar.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal',
@@ -24,7 +25,7 @@ export class ModalComponent implements OnInit,AfterViewInit {
   errorMsgNumber : number
 
   eventDataModel: ModalData = new ModalData()
-  constructor(private formbuilder: FormBuilder, public api: ApiService, public funCall : CalendarComponent) { }
+  constructor(private formbuilder: FormBuilder, public api: ApiService, public funCall : CalendarComponent, public router : Router) { }
   
   ngAfterViewInit(): void {
     //console.log(this.calendarData.modalDate)
@@ -108,4 +109,9 @@ export class ModalComponent implements OnInit,AfterViewInit {
   //   ref?.click()
   //   this.formValue.reset()
   // }
+
+  goToLastPage()
+  {
+      this.router.navigateByUrl('/login')
+  }
 }
