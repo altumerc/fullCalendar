@@ -4,6 +4,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import daygridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction'
+//import momentPlugin from '@fullcalendar/moment';
 import { CalendarOptions, DateSelectArg, EventClickArg, EventApi, EventInput } from '@fullcalendar/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from 'src/app/api.service';
@@ -14,6 +15,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ModalComponent } from '../modal/modal.component';
 import { EventData } from '../calendar/eventData.model'
+import { DateTimePicker } from '@syncfusion/ej2-angular-calendars';
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -31,11 +33,13 @@ export class CalendarComponent implements OnInit {
   eventData: EventData[]
 
   calendarOptions: CalendarOptions = {
-    plugins: [interactionPlugin, daygridPlugin, timeGridPlugin],
+    plugins: [interactionPlugin, daygridPlugin, timeGridPlugin,],
     weekends: false,
-    nowIndicator:true,
-    now:new Date(),
+    nowIndicator: true,
     initialView: 'timeGridWeek',
+    now: '2022-07-26T09:25:00',
+    showNonCurrentDates:false
+
   }
 
   constructor(public apiservice: ApiService) { }
@@ -50,6 +54,8 @@ export class CalendarComponent implements OnInit {
       this.calendarOptions = {
         initialView: 'timeGridWeek',
         weekends: false,
+        //coloumnHeader: false,
+        dayHeaderFormat : {weekday:'short' ,day: 'numeric',month:'2-digit', },
         slotDuration: "00:15:00",
         slotMinTime: "09:00:00",
         slotMaxTime: "21:00:00",
@@ -64,11 +70,12 @@ export class CalendarComponent implements OnInit {
           day: 'numeric',
           weekday: 'long'
         }, */
+        
         //editable:true,
         selectable: true,
         events: data,
-        eventColor: 'pink',
-
+        eventColor: '#034457',
+        aspectRatio: 1.7,
         dateClick: this.handleDateClick.bind(this),
         eventClick: this.handleEventClick.bind(this)
       }
@@ -94,10 +101,23 @@ export class CalendarComponent implements OnInit {
     var titleOfEvent = info.event.title
     this.apiservice.titleOfEventInMeeting = titleOfEvent
     var name = info.event.classNames
-    this.apiservice.nameOfMeetingHost = name
+    this.apiservice.nameOfMeetingHost = name  
+    
     this.apiservice.startTimeForMeeting = info.event.start.toLocaleTimeString()
     this.apiservice.endTimeForMeeting = info.event.end.toLocaleTimeString()
+    this.apiservice.capacityForMeeting = info.event.extendedProps.cap
+    console.log(this.apiservice.capacityForMeeting)
+    this.apiservice.dateForEventModal = info.event.extendedProps.startStr.slice(0, 10)
+    //console.log(this.apiservice.descriptionForMeeting)
+    // document.getElementById('calendarModal').addEventListener('click', function (e) {
+    //   e.stopPropagation();
+    // });
+    //console.log('handle event click works')
+    // var popup = document.getElementById('calendarModal');
+    // popup.classList.toggle("show")
+
     document.getElementById('calendarModal').click()
+    //console.log(a)
     // this.apiservice.getDataForModal().subscribe(response => {
     //   var name = info.event.classNames
     //   //var cap = info.event.classNames

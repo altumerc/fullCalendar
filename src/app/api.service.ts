@@ -16,6 +16,8 @@ export class ApiService {
   nameOfMeetingHost: any;
   startTimeForMeeting: any;
   endTimeForMeeting: any;
+  capacityForMeeting: any;
+  dateForEventModal: any;
   getItems() {
     throw new Error('Method not implemented.');
   }
