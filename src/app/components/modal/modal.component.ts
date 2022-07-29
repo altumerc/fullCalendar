@@ -87,7 +87,12 @@ export class ModalComponent implements OnInit,AfterViewInit {
         }
         else if(err.error.status == 400)
         {
-          console.log(err.error.message)
+          //console.log(err.error.message)
+          alert(err.error.message)
+        }
+        else if(err.error.status == 406)
+        {
+          //console.log(err.error.message)
           alert(err.error.message)
         }
         //alert("Meeting cannot be scheduled right now as room is already booked")

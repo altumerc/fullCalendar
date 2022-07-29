@@ -54,8 +54,13 @@ export class CalendarComponent implements OnInit {
       this.calendarOptions = {
         initialView: 'timeGridWeek',
         weekends: false,
+        views: {
+          week: {
+            weekday:'short',day: 'numeric', month : 'short'
+          }
+        },
         //coloumnHeader: false,
-        dayHeaderFormat : {weekday:'short' ,day: 'numeric',month:'2-digit', },
+        //dayHeaderFormat : {weekday:'short',month: 'short',day: 'numeric'  },
         slotDuration: "00:15:00",
         slotMinTime: "09:00:00",
         slotMaxTime: "21:00:00",
