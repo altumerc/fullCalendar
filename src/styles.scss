@@ -1,4 +1,5 @@
 //@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 html,
 body,
 body > * { /* the app-root */
@@ -8,15 +9,9 @@ body > * { /* the app-root */
   
 }
 .timepicker-overlay {
-
   z-index: 10000000 !important;
-
 }
 
-
-
 .timepicker-backdrop-overlay {
-
   z-index: 10000000 !important;
-
 }

@@ -15,6 +15,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ModalComponent } from '../modal/modal.component';
 import { EventData } from '../calendar/eventData.model'
+//import { DateTimePicker } from '@syncfusion/ej2-angular-calendars';
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -31,25 +32,19 @@ export class CalendarComponent implements OnInit {
   calendarVisible = true;
   eventData: EventData[]
 
-  calendarOptions: CalendarOptions = {
+  calendarOptions: CalendarOptions = { 
+
     plugins: [interactionPlugin, daygridPlugin, timeGridPlugin,],
     weekends: false,
-    initialView: 'timeGridWeek'
-    //coloumHeaderFormat: '',
-    // views: {
-    //   columnHeaderFormat: {
-    //     month: 'ddd',
-    //     week: 'ddd d/M',
-    //     day: 'dddd d/M'
-    // }
-      // coloumnHeader: { // name of view
-      //   //titleFormat: 'YYYY, MM, DD',
-      //   coloumnHeaderFormat : 'ddd D/M'
-      //   // other view-specific options here
-      // }
+    // nowIndicator: true,
+     initialView: 'timeGridWeek',
+    // now: '2022-07-26T09:25:00',
+    // showNonCurrentDates:false
+
     }
 
   constructor(public apiservice: ApiService) { }
+
 
   @ViewChild('divClick') divClick: ElementRef;
 
@@ -60,13 +55,16 @@ export class CalendarComponent implements OnInit {
       this.calendarOptions = {
         initialView: 'timeGridWeek',
         weekends: false,
-        views: {
-          week: {
-            weekday:'short',day: 'numeric', month : 'short'
-          }
-        },
+        // views: {
+        //   week: {
+        //     weekday:'short',day: 'numeric', month : 'short'
+        //   }
+        // },
         //coloumnHeader: false,
         //dayHeaderFormat : {weekday:'short',month: 'short',day: 'numeric'  },
+        // nowIndicator:true,
+        // now: new Date(),
+        //showNonCurrentDates:false,
         slotDuration: "00:15:00",
         slotMinTime: "09:00:00",
         slotMaxTime: "21:00:00",
@@ -75,12 +73,18 @@ export class CalendarComponent implements OnInit {
           center: 'title',
           right: 'timeGridWeek,timeGridDay'
         },
-        aspectRatio: 1.7,
-        scrollTime: '00:00',
+        /* weekText: { // will produce something like "Tuesday, September 18, 2018"
+          month: 'long',
+          year: 'numeric',
+          day: 'numeric',
+          weekday: 'long'
+        }, */
+        
         //editable:true,
         selectable: true,
         events: data,
         eventColor: '#034457',
+        aspectRatio: 1.7,
         dateClick: this.handleDateClick.bind(this),
         eventClick: this.handleEventClick.bind(this)
       }

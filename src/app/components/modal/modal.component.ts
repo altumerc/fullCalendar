@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
 })
 
 export class ModalComponent implements OnInit,AfterViewInit {
-
   formValue !: FormGroup
   newEndTime: String = ""
   dateForCalendar = this.funCall.modalDate
@@ -25,7 +24,8 @@ export class ModalComponent implements OnInit,AfterViewInit {
   errorMsgNumber : number
 
   eventDataModel: ModalData = new ModalData()
-  constructor(private formbuilder: FormBuilder, public api: ApiService, public funCall : CalendarComponent, public router : Router) { }
+  
+  constructor(private formbuilder: FormBuilder, public api: ApiService, public funCall : CalendarComponent,public router: Router) { }
   
   ngAfterViewInit(): void {
     //console.log(this.calendarData.modalDate)
@@ -56,6 +56,7 @@ export class ModalComponent implements OnInit,AfterViewInit {
 
   postDataOfEvent() {
     this.eventDataModel.nameOfOrganiser = this.formValue.value.nameOfOrganiser
+    
     this.eventDataModel.dateMeeting = this.formValue.value.dateMeeting
     this.eventDataModel.startTime = this.formValue.value.startTime
     this.eventDataModel.endTime = this.formValue.value.endTime
@@ -109,9 +110,7 @@ export class ModalComponent implements OnInit,AfterViewInit {
   //   ref?.click()
   //   this.formValue.reset()
   // }
-
-  goToLastPage()
-  {
-      this.router.navigateByUrl('/login')
+  onLogout(){
+    this.router.navigateByUrl('/logout')
   }
 }

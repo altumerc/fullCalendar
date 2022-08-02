@@ -1,4 +1,4 @@
-import { Component ,OnInit} from '@angular/core';
+import { Component ,OnInit, isDevMode} from '@angular/core';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import daygridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +34,13 @@ export class AppComponent implements OnInit{
 //   constructor(private apiservice : ApiService) {}
   
   ngOnInit() {
+
+    if(isDevMode()){
+      console.log('Development')
+    }
+    else{
+      console.log('Production')
+    }
   //   this.apiservice.getEventsStart().subscribe((data) => {  
   //       this.calendarOptions = {
   //         headerToolbar: {

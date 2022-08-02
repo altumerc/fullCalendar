@@ -8,7 +8,7 @@ import { ApiService } from '../../api.service'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent{
+export class LoginComponent {
   //items = this.apiService.getItems();
   checkoutForm = this.formbuilder.group(
     {
@@ -20,13 +20,19 @@ export class LoginComponent{
     private router: Router, private formbuilder: FormBuilder, private apiService: ApiService) { }
 
   onSubmit(): void {
-    if(this.checkoutForm.value.e_id=='admin' && this.checkoutForm.value.pwd=='admin'){
+    if (this.checkoutForm.value.e_id == 'admin' && this.checkoutForm.value.pwd == 'admin') {
       this.router.navigateByUrl('calendar')
     }
-    else{
-      alert("Incorrect id and password")
+    else if (this.checkoutForm.value.e_id != 'admin' && this.checkoutForm.value.pwd != 'admin'){
+      alert('Wrong emp id or password')
+    } 
+      else 
+      {
+          alert('Employee Id or Password cannot be empty')
+      }
+      
     }
-  }
+  
   visible: boolean = true;
   changetype: boolean = true;
   loginTrue!: boolean
@@ -42,4 +48,4 @@ export class LoginComponent{
         this.router.navigateByUrl('calendar')
       }
     }) */
-  }
+}

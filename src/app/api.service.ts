@@ -10,15 +10,17 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ApiService {
-  
-  modalDate: String = ""
-  modalStartTime: String = "";
-  titleOfEventInMeeting: String = "";
-  nameOfMeetingHost: String = "";
-  startTimeForMeeting: String = "";
-  endTimeForMeeting: String = "";
-  dateForEventModal: String ="";
-  capacityForMeeting: String = ""
+  modalDate: any;
+  modalStartTime: any;
+  titleOfEventInMeeting: any;
+  nameOfMeetingHost: any;
+  startTimeForMeeting: any;
+  endTimeForMeeting: any;
+  capacityForMeeting: any;
+  dateForEventModal: any;
+  getItems() {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private http: HttpClient) { }
 
