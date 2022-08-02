@@ -35,11 +35,9 @@ export class CalendarComponent implements OnInit {
   calendarOptions: CalendarOptions = {
     plugins: [interactionPlugin, daygridPlugin, timeGridPlugin,],
     weekends: false,
-    nowIndicator: true,
     initialView: 'timeGridWeek',
-    now: '2022-07-26T09:25:00',
-    showNonCurrentDates:false
-
+    showNonCurrentDates:false,
+    now: new Date()
   }
 
   constructor(public apiservice: ApiService) { }
@@ -64,6 +62,8 @@ export class CalendarComponent implements OnInit {
         slotDuration: "00:15:00",
         slotMinTime: "09:00:00",
         slotMaxTime: "21:00:00",
+        nowIndicator: true,
+        now: new Date(),
         headerToolbar: {
           left: 'prev,next',
           center: 'title',
