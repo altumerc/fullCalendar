@@ -61,7 +61,7 @@ export class CalendarComponent implements OnInit {
         //   }
         // },
         //coloumnHeader: false,
-        //dayHeaderFormat : {weekday:'short',month: 'short',day: 'numeric'  },
+         dayHeaderFormat : {month: 'numeric' ,day: 'numeric' },
         // nowIndicator:true,
         // now: new Date(),
         //showNonCurrentDates:false,
@@ -85,11 +85,28 @@ export class CalendarComponent implements OnInit {
         events: data,
         eventColor: '#034457',
         aspectRatio: 1.7,
+        select : this.check.bind(this),
         dateClick: this.handleDateClick.bind(this),
-        eventClick: this.handleEventClick.bind(this)
+        eventClick: this.handleEventClick.bind(this),
+        
       }
     })
   }
+  check(info){
+    console.log(info)
+    var dateClick = info.end
+    var today = new Date()
+    if(dateClick < today)
+    {
+      alert('The time has already passed cannot make a booking')
+      //return false
+    }
+    else{
+      //return true
+      document.getElementById('divClick').click()
+      //dateClick: this.handleDateClick.bind(this);
+    }
+}
 
   handleDateClick(info) {
     var dateForCalendarInModal = info.dateStr.slice(0, 10).toString()
@@ -107,8 +124,7 @@ export class CalendarComponent implements OnInit {
 
     //this.apiservice.modalStartTime = timeForCalendarInModal
     //console.log(timeForCalendarInModal)
-
-    document.getElementById('divClick').click()
+    
     // var popup = document.getElementById('divClick');
     //   popup.classList.toggle("show")
     //.click();

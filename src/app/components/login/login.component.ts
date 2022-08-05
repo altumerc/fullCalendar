@@ -23,14 +23,9 @@ export class LoginComponent {
     if (this.checkoutForm.value.e_id == 'admin' && this.checkoutForm.value.pwd == 'admin') {
       this.router.navigateByUrl('calendar')
     }
-    else if (this.checkoutForm.value.e_id != 'admin' && this.checkoutForm.value.pwd != 'admin'){
+    else {
       alert('Wrong emp id or password')
     } 
-      else 
-      {
-          alert('Employee Id or Password cannot be empty')
-      }
-      
     }
   
   visible: boolean = true;

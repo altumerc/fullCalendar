@@ -17,6 +17,7 @@ import { ApiService } from './api.service';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LogoutComponent } from './components/logout/logout.component';
+import { UserComponent } from './components/user/user.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -32,6 +33,7 @@ FullCalendarModule.registerPlugins([
     LoginComponent,
     CalendarComponent,
     LogoutComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

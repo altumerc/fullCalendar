@@ -18,6 +18,9 @@ export class ApiService {
   endTimeForMeeting: any;
   capacityForMeeting: any;
   dateForEventModal: any;
+  
+  
+  
   getItems() {
     throw new Error('Method not implemented.');
   }
@@ -29,9 +32,9 @@ export class ApiService {
      return this.http.post('http://localhost:7000/')
    } */
   createMeeting(data: ModalData): Observable<any[]> {
-    return this.http.post<any[]>('http://localhost:7000/postData', data)
+    return this.http.post<any[]>('http://192.168.2.215:7000/postData', data)
   }
   getEventsStart(): Observable<any[]> {
-    return this.http.get<string[]>('http://localhost:7000/data/start')
+    return this.http.get<string[]>('http://192.168.2.215:7000/data/start')
   }
 }
